@@ -1,0 +1,44 @@
+#compdef qr
+
+autoload -U is-at-least
+
+_qr() {
+    typeset -A opt_args
+    typeset -a _arguments_options
+    local ret=1
+
+    if is-at-least 5.2; then
+        _arguments_options=(-s -S -C)
+    else
+        _arguments_options=(-s -C)
+    fi
+
+    local context curcontext="$curcontext" state line
+    _arguments "${_arguments_options[@]}" \
+'*-o+[Output file (supported file extensions: jpg, png, svg); omit to print QR code to console]:OUTPUT:_files' \
+'*--output=[Output file (supported file extensions: jpg, png, svg); omit to print QR code to console]:OUTPUT:_files' \
+'*-f+[Foreground RGB color (hex code)]:FG: ' \
+'*--fg=[Foreground RGB color (hex code)]:FG: ' \
+'*-b+[Background RGB color (hex code)]:BG: ' \
+'*--bg=[Background RGB color (hex code)]:BG: ' \
+'*-B+[Border size (expressed in unit blocks)]:BORDER: ' \
+'*--border=[Border size (expressed in unit blocks)]:BORDER: ' \
+'*-L+[QR error correction level]:ERROR_CORRECTION_LEVEL:(low medium quartile high)' \
+'*--error-correction-level=[QR error correction level]:ERROR_CORRECTION_LEVEL:(low medium quartile high)' \
+'*-s+[Scale factor (1..255)]:SCALE: ' \
+'*--scale=[Scale factor (1..255)]:SCALE: ' \
+'-h[Print help information]' \
+'--help[Print help information]' \
+'-V[Print version information]' \
+'--version[Print version information]' \
+'::string -- String to encode:' \
+&& ret=0
+}
+
+(( $+functions[_qr_commands] )) ||
+_qr_commands() {
+    local commands; commands=()
+    _describe -t commands 'qr commands' commands "$@"
+}
+
+_qr "$@"

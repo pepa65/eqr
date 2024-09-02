@@ -4,11 +4,11 @@ version = "0.3.0"
 authors = ["Marco Radocchia <marco.radocchia@outlook.com", "github.com/pepa65"]
 edition = "2021"
 rust-version = "1.62.0"
-description = "A CLI utility to encode URLs or text into QR codes in various formats and colors."
+description = "Encode text into svg/png/jpg/terminal format QR codes"
 readme = "README.md"
 repository = "https://github.com/pepa/qr"
 license = "GPL-3.0-only"
-keywords = ["qr", "qrcode", "qr-code", "generator", "url"]
+keywords = ["qr", "qrcode", "qr-code", "generator", "svg", "png", "jpg", "terminal"]
 categories = ["command-line-utilities", "computer-vision", "encoding"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html

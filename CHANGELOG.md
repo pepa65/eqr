@@ -2,13 +2,17 @@
 ## [0.3.0] - 2024-09-02
 ### Added
 - Short flag `-L` for `--error-correction-level`
+- Atrributes width/height on svg element for scale
 ## Changed
 - Repo at github.com/pepa65/qr
+- Allow scale for svg
+- Fix border on raster images
+- Fix help on fg/bg
 - No `#` to specify hex colors
 ### Removed
 - xml/DOCTYPE headers from svg
 - Tabs from svg
-- Attributes stroke, width, height from svg
+- Attribute stroke from svg
 - `jpeg` file format from `-o`/`--output`
 
 ## [0.2.0] - 2022-07-18

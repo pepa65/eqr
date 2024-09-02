@@ -1,18 +1,4 @@
-// qr: Encode URLs or text into QR codes.
-// Copyright (C) 2022 Marco Radocchia, 2024 pepa65
-//
-// This program is free software: you can redistribute it and/or modify it under
-// the terms of the GNU General Public License as published by the Free Software
-// Foundation, either version 3 of the License, or (at your option) any later
-// version.
-//
-// This program is distributed in the hope that it will be useful, but WITHOUT
-// ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-// FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
-// details.
-//
-// You should have received a copy of the GNU General Public License along with
-// this program. If not, see https://www.gnu.org/licenses/.
+// qr - Encode text into svg/png/jpg/terminal format QR codes
 
 mod args;
 mod error;
@@ -20,7 +6,7 @@ mod utils;
 
 use args::{Args, Parser};
 use dialoguer::{theme::ColorfulTheme, Confirm};
-use error::{Error, ErrorKind, Warning};
+use error::{Error, ErrorKind};
 use image::{ImageBuffer, RgbImage};
 use qrcodegen::QrCode;
 use std::{
@@ -33,9 +19,6 @@ use std::{
 use utils::hex_to_rgb;
 
 /// QR code.
-///
-/// # Fields
-///
 /// - data: `QrCode` instance containing QR code data information
 /// - border: output border size expressed in unit blocks
 struct Qr {
@@ -56,7 +39,7 @@ impl Qr {
 /// Trait defining methods to output QR code to various formats.
 trait QrOutput {
     /// Create SVG file containing the QR code.
-    fn svg(&self, output: &Path, bg: &str, fg: &str) -> Result<(), ErrorKind>;
+    fn svg(&self, output: &Path, scale: i32, bg: &str, fg: &str) -> Result<(), ErrorKind>;
 
     /// Create raster image (png|jpg) file containing the QR code.
     fn rst(&self, output: &Path, scale: i32, bg: &str, fg: &str) -> Result<(), ErrorKind>;
@@ -67,7 +50,7 @@ trait QrOutput {
 
 impl QrOutput for Qr {
     /// Create SVG file containing the QR code.
-    fn svg(&self, output: &Path, bg: &str, fg: &str) -> Result<(), ErrorKind> {
+    fn svg(&self, output: &Path, scale: i32, bg: &str, fg: &str) -> Result<(), ErrorKind> {
         // Create output file.
         let mut file = match fs::File::create(output) {
             Ok(file) => file,
@@ -80,16 +63,13 @@ impl QrOutput for Qr {
 
         let size = self.data.size();
         let dimension = size.checked_add(self.border * 2).unwrap();
+        let pix = scale * dimension;
 
         write!(
             svg_str,
-//            "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\
-//                <!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \
-//               \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\
-//                <svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" \
                 "<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" \
-                  viewBox=\"0 0 {dimension} {dimension}\">\
-                  <rect width=\"100%\" height=\"100%\" fill=\"{bg}\"/><path d=\""
+                  viewBox=\"0 0 {dimension} {dimension}\" width=\"{pix}\" height=\"{pix}\">\
+                  <rect width=\"100%\" height=\"100%\" fill=\"#{bg}\"/><path d=\""
         )
         .unwrap();
 
@@ -104,7 +84,7 @@ impl QrOutput for Qr {
                 }
             }
         }
-        writeln!(svg_str, "\" fill=\"{fg}\"/></svg>").unwrap();
+        writeln!(svg_str, "\" fill=\"#{fg}\"/></svg>").unwrap();
 
         // Write SVG to output file.
         if let Err(err) = file.write_all(svg_str.as_bytes()) {
@@ -132,7 +112,7 @@ impl QrOutput for Qr {
             for x in 0..img_size {
                 let pixel = img.get_pixel_mut(x as u32, y as u32);
 
-                if x <= scaled_border || y <= scaled_border {
+                if x < scaled_border || y < scaled_border {
                     pixel.0 = bg;
                     continue;
                 }
@@ -210,15 +190,10 @@ fn run(args: Args) -> Result<(), ErrorKind> {
             // Determine output file type based on file extension.
             match output.extension().map(|ext| ext.to_str().unwrap()) {
                 Some("svg") => {
-                    qr.svg(output, &args.bg, &args.fg)?;
-                    // Warn the user if scale CLI option was provided with non-raster image output
-                    // format.
-                    if args.scale.is_some() {
-                        return Err(ErrorKind::Warning(Warning::UnexpectedScaleOpt));
-                    }
+                    qr.svg(output, i32::from(args.scale), &args.bg, &args.fg)?
                 }
                 Some("png" | "jpg") => {
-                    qr.rst(output, args.scale.unwrap_or(25).into(), &args.bg, &args.fg)?
+                    qr.rst(output, i32::from(args.scale), &args.bg, &args.fg)?
                 }
                 _ => return Err(ErrorKind::Error(Error::InvalidOutputExt)),
             }

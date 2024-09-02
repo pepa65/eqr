@@ -1,0 +1,41 @@
+.ie \n(.g .ds Aq \(aq
+.el .ds Aq '
+.TH qr 1  "qr 0.3.0" 
+.SH NAME
+qr \- Encode text into svg/png/jpg/terminal format QR codes
+.SH SYNOPSIS
+\fBqr\fR [\fB\-h\fR|\fB\-\-help\fR] [\fB\-V\fR|\fB\-\-version\fR] [\fB\-o\fR|\fB\-\-output\fR] [\fB\-f\fR|\fB\-\-fg\fR] [\fB\-b\fR|\fB\-\-bg\fR] [\fB\-B\fR|\fB\-\-border\fR] [\fB\-L\fR|\fB\-\-error\-correction\-level\fR] [\fB\-s\fR|\fB\-\-scale\fR] [\fISTRING\fR] 
+.SH DESCRIPTION
+Encode text into svg/png/jpg/terminal format QR codes
+.SH OPTIONS
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+Print help information
+.TP
+\fB\-V\fR, \fB\-\-version\fR
+Print version information
+.TP
+\fB\-o\fR, \fB\-\-output\fR=\fIOUTPUT\fR
+Output file (supported file extensions: jpg, png, svg); omit to print QR code to console
+.TP
+\fB\-f\fR, \fB\-\-fg\fR=\fIFG\fR [default: 000]
+Foreground RGB color (hex code)
+.TP
+\fB\-b\fR, \fB\-\-bg\fR=\fIBG\fR [default: fff]
+Background RGB color (hex code)
+.TP
+\fB\-B\fR, \fB\-\-border\fR=\fIBORDER\fR [default: 1]
+Border size (expressed in unit blocks)
+.TP
+\fB\-L\fR, \fB\-\-error\-correction\-level\fR=\fIERROR_CORRECTION_LEVEL\fR [default: medium]
+QR error correction level
+.TP
+\fB\-s\fR, \fB\-\-scale\fR=\fISCALE\fR [default: 16]
+Scale factor (1..255)
+.TP
+[\fISTRING\fR]
+String to encode
+.SH VERSION
+v0.3.0
+.SH AUTHORS
+Marco Radocchia <marco.radocchia@outlook.com>, github.com/pepa65

@@ -1,18 +1,4 @@
-// qr: Encode URLs or text into QR codes.
-// Copyright (C) 2022 Marco Radocchia, 2024 pepa65
-//
-// This program is free software: you can redistribute it and/or modify it under
-// the terms of the GNU General Public License as published by the Free Software
-// Foundation, either version 3 of the License, or (at your option) any later
-// version.
-//
-// This program is distributed in the hope that it will be useful, but WITHOUT
-// ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-// FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
-// details.
-//
-// You should have received a copy of the GNU General Public License along with
-// this program. If not, see https://www.gnu.org/licenses/.
+// qr - Encode text into svg/png/jpg/terminal format QR codes
 
 pub use clap::Parser;
 use lazy_static::lazy_static;
@@ -27,7 +13,7 @@ pub fn parse_hex_color(hex: &str) -> Result<String, String> {
     }
 
     match HEX_RE.is_match(hex) {
-        true => Ok("#".to_owned()+&hex.to_string()),
+        true => Ok(hex.to_string()),
         false => Err(format!("{hex} is not a valid hex color code")),
     }
 }
@@ -57,7 +43,7 @@ pub struct Args {
     #[clap(short, long, value_parser)]
     pub output: Option<PathBuf>,
 
-    /// Background color (hex code).
+    /// Foreground RGB color (hex code).
     #[clap(
         short,
         long,
@@ -67,7 +53,7 @@ pub struct Args {
     )]
     pub fg: String,
 
-    /// Foreground color (hex code).
+    /// Background RGB color (hex code).
     #[clap(
         short,
         long,
@@ -91,9 +77,9 @@ pub struct Args {
     )]
     pub error_correction_level: QrCodeEcc,
 
-    /// Scale factor (raster image output only) [default: 25].
-    #[clap(short, long, requires = "output", value_parser)]
-    pub scale: Option<u8>,
+    /// Scale factor (1..255).
+    #[clap(short, long, requires = "output", default_value_t = 16, value_parser)]
+    pub scale: u8,
 
     /// String to encode.
     #[clap(value_parser)]

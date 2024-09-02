@@ -1,26 +1,9 @@
-// qr: Encode URLs or text into QR codes.
-// Copyright (C) 2022 Marco Radocchia, 2024 pepa65
-//
-// This program is free software: you can redistribute it and/or modify it under
-// the terms of the GNU General Public License as published by the Free Software
-// Foundation, either version 3 of the License, or (at your option) any later
-// version.
-//
-// This program is distributed in the hope that it will be useful, but WITHOUT
-// ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-// FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
-// details.
-//
-// You should have received a copy of the GNU General Public License along with
-// this program. If not, see https://www.gnu.org/licenses/.
+// qr - Encode text into svg/png/jpg/terminal format QR codes
 
 /// Convert HEX color code to RGB values
-///
-/// # Note
-///
 /// This function assumes `hex` parameter being a valid HEX color code.
 pub fn hex_to_rgb(hex: &str) -> [u8; 3] {
-    let mut hex = hex.strip_prefix('#').unwrap().to_string();
+    let mut hex = hex.to_string();
     if hex.len() == 3 {
         let mut expanded = String::new();
         for c in hex.chars() {

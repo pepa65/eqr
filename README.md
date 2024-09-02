@@ -1,10 +1,5 @@
-<div align="center">
-  <h1 align="center">qr</h1>
-  ![colored_qr](assets/colored_qr.png)
-</div>
-
-Command Line Interface utility to encode URLs or more generally text into QR
-codes in various file formats and colors.
+# qr 0.3.0
+**Encode text into svg/png/jpg/terminal format QR codes**
 
 ## Index
 - [Install](#install)
@@ -32,7 +27,7 @@ cargo install --git https://github.com/pepa65/qr --branch master
 ```
 qr 0.3.0
 Marco Radocchia <marco.radocchia@outlook.com>, github.com/pepa65
-A CLI utility to encode URLs or text into QR codes in various formats and colors.
+Encode text into svg/png/jpg/terminal format QR codes
 
 USAGE:
     qr [OPTIONS] [STRING]
@@ -42,27 +37,26 @@ ARGS:
 
 OPTIONS:
     -b, --bg <BG>
-            Foreground color (hex code) [default: #FFF]
+            Background RGB color (hex code) [default: fff]
 
     -B, --border <BORDER>
             Border size (expressed in unit blocks) [default: 1]
 
-    -L, --error-correction-level <ERROR_CORRECTION_LEVEL>
-            QR error orrection level [default: medium] [possible values: low, medium, quartile,
-            high]
-
     -f, --fg <FG>
-            Background color (hex code) [default: #000]
+            Foreground RGB color (hex code) [default: 000]
 
     -h, --help
             Print help information
 
+    -L, --error-correction-level <ERROR_CORRECTION_LEVEL>
+            QR error correction level [default: medium] [possible values: low, medium, quartile,
+            high]
+
     -o, --output <OUTPUT>
-            Output file (supported file extensions: jpg, png, svg); omit to print QR code to
-            console
+            Output file (supported file extensions: jpg, png, svg); omit to print QR code to console
 
     -s, --scale <SCALE>
-            Scale factor (raster image output only) [default: 25]
+            Scale factor (1..255) [default: 16]
 
     -V, --version
             Print version information
