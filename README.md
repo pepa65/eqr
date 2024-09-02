@@ -1,3 +1,5 @@
+[![Cargo build](https://github.com/pepa65/qr/actions/workflows/rust.yml/badge.svg)](https://github.com/pepa65/qr/actions/workflows/rust.yml)
+
 # qr 0.3.1
 **Encode text into svg/png/jpg/terminal format QR codes**
 

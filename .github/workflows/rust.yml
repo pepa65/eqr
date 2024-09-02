@@ -29,4 +29,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: qr
-        path: target/release/qr
+        path: /home/runner/work/qr/qr
