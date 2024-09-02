@@ -8,6 +8,7 @@
 - Allow scale for svg
 - Fix border on raster images
 - Fix help on fg/bg
+- No inverted colors on terminal
 - No `#` to specify hex colors
 ### Removed
 - xml/DOCTYPE headers from svg

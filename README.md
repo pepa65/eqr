@@ -11,7 +11,7 @@
 
 ## Install
 The following installation instructions assume a **Rust toolchain** (`rustc >=1.62.0`) installed
-on the system. In order to install such toolchain you can use `rusutp`: see
+on the system. In order to install such toolchain you can use `rustup`: see
 https://www.rust-lang.org/tools/install for further installation instructions and notes.
 
 ### Cargo

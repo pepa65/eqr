@@ -138,9 +138,9 @@ impl QrOutput for Qr {
                 print!(
                     "{0}{0}",
                     if self.data.get_module(x, y) {
-                        '█'
-                    } else {
                         ' '
+                    } else {
+                        '█'
                     }
                 );
             }
