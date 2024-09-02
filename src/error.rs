@@ -1,5 +1,5 @@
-// qr-rs: Encode URLs or text into QR codes.
-// Copyright (C) 2022 Marco Radocchia
+// qr: Encode URLs or text into QR codes.
+// Copyright (C) 2022 Marco Radocchia, 2024 pepa65
 //
 // This program is free software: you can redistribute it and/or modify it under
 // the terms of the GNU General Public License as published by the Free Software

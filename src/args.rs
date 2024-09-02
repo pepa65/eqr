@@ -1,5 +1,5 @@
-// qr-rs: Encode URLs or text into QR codes.
-// Copyright (C) 2022 Marco Radocchia
+// qr: Encode URLs or text into QR codes.
+// Copyright (C) 2022 Marco Radocchia, 2024 pepa65
 //
 // This program is free software: you can redistribute it and/or modify it under
 // the terms of the GNU General Public License as published by the Free Software
@@ -23,11 +23,11 @@ use std::path::PathBuf;
 /// Parse hex code colors.
 pub fn parse_hex_color(hex: &str) -> Result<String, String> {
     lazy_static! {
-        static ref HEX_RE: Regex = Regex::new("^#([0-9A-Fa-f]{3}){1,2}$").unwrap();
+        static ref HEX_RE: Regex = Regex::new("^([0-9A-Fa-f]{3}){1,2}$").unwrap();
     }
 
     match HEX_RE.is_match(hex) {
-        true => Ok(hex.to_string()),
+        true => Ok("#".to_owned()+&hex.to_string()),
         false => Err(format!("{hex} is not a valid hex color code")),
     }
 }
@@ -46,13 +46,13 @@ pub fn parse_error_correction_level(ecl: &str) -> Result<QrCodeEcc, String> {
 /// A CLI utility to encode URLs or text into QR codes in various formats and colors.
 #[derive(Parser, Debug)]
 #[clap(
-    author = "Marco Radocchia <marco.radocchia@outlook.com>",
+    author = "Marco Radocchia <marco.radocchia@outlook.com>, github.com/pepa65",
     version,
     about,
     long_about = None
 )]
 pub struct Args {
-    /// Output file (supported file extensions: jpeg, jpg, png, svg); omit to print QR code to
+    /// Output file (supported file extensions: jpg, png, svg); omit to print QR code to
     /// console.
     #[clap(short, long, value_parser)]
     pub output: Option<PathBuf>,
@@ -62,7 +62,7 @@ pub struct Args {
         short,
         long,
         requires = "output",
-        default_value = "#000",
+        default_value = "000",
         value_parser = parse_hex_color
     )]
     pub fg: String,
@@ -72,7 +72,7 @@ pub struct Args {
         short,
         long,
         requires = "output",
-        default_value = "#FFF",
+        default_value = "fff",
         value_parser = parse_hex_color
     )]
     pub bg: String,
@@ -81,8 +81,9 @@ pub struct Args {
     #[clap(short = 'B', long, default_value_t = 1, value_parser)]
     pub border: u8,
 
-    /// QR error orrection level.
+    /// QR error correction level.
     #[clap(
+        short = 'L',
         long,
         default_value = "medium",
         possible_values = ["low", "medium", "quartile", "high"],

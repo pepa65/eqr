@@ -1,12 +1,12 @@
 [package]
-name = "qr-rs"
-version = "0.2.0"
-authors = ["Marco Radocchia <marco.radocchia@outlook.com"]
+name = "qr"
+version = "0.3.0"
+authors = ["Marco Radocchia <marco.radocchia@outlook.com", "github.com/pepa65"]
 edition = "2021"
 rust-version = "1.62.0"
 description = "A CLI utility to encode URLs or text into QR codes in various formats and colors."
 readme = "README.md"
-repository = "https://github.com/marcoradocchia/qr-rs"
+repository = "https://github.com/pepa/qr"
 license = "GPL-3.0-only"
 keywords = ["qr", "qrcode", "qr-code", "generator", "url"]
 categories = ["command-line-utilities", "computer-vision", "encoding"]

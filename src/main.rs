@@ -1,5 +1,5 @@
-// qr-rs: Encode URLs or text into QR codes.
-// Copyright (C) 2022 Marco Radocchia
+// qr: Encode URLs or text into QR codes.
+// Copyright (C) 2022 Marco Radocchia, 2024 pepa65
 //
 // This program is free software: you can redistribute it and/or modify it under
 // the terms of the GNU General Public License as published by the Free Software
@@ -58,7 +58,7 @@ trait QrOutput {
     /// Create SVG file containing the QR code.
     fn svg(&self, output: &Path, bg: &str, fg: &str) -> Result<(), ErrorKind>;
 
-    /// Create raster image (png|jpg|jpeg) file containing the QR code.
+    /// Create raster image (png|jpg) file containing the QR code.
     fn rst(&self, output: &Path, scale: i32, bg: &str, fg: &str) -> Result<(), ErrorKind>;
 
     /// Print QR code to the console.
@@ -81,14 +81,15 @@ impl QrOutput for Qr {
         let size = self.data.size();
         let dimension = size.checked_add(self.border * 2).unwrap();
 
-        writeln!(
+        write!(
             svg_str,
-            "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\
-                <!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \
-                \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\
-                <svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" \
-                viewBox=\"0 0 {dimension} {dimension}\" stroke=\"none\">\
-                \t<rect width=\"100%\" height=\"100%\" fill=\"{bg}\"/>\t<path d=\""
+//            "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\
+//                <!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \
+//               \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\
+//                <svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" \
+                "<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" \
+                  viewBox=\"0 0 {dimension} {dimension}\">\
+                  <rect width=\"100%\" height=\"100%\" fill=\"{bg}\"/><path d=\""
         )
         .unwrap();
 
@@ -103,7 +104,7 @@ impl QrOutput for Qr {
                 }
             }
         }
-        writeln!(svg_str, "\" fill=\"{fg}\"/>\n</svg>").unwrap();
+        writeln!(svg_str, "\" fill=\"{fg}\"/></svg>").unwrap();
 
         // Write SVG to output file.
         if let Err(err) = file.write_all(svg_str.as_bytes()) {
@@ -113,7 +114,7 @@ impl QrOutput for Qr {
         Ok(())
     }
 
-    /// Create raster image (png|jpg|jpeg) file containing the QR code.
+    /// Create raster image (png|jpg) file containing the QR code.
     fn rst(&self, output: &Path, scale: i32, bg: &str, fg: &str) -> Result<(), ErrorKind> {
         // Convert colors to RGB values.
         let fg = hex_to_rgb(fg);
@@ -129,7 +130,7 @@ impl QrOutput for Qr {
         // Write image pixels.
         for y in 0..img_size {
             for x in 0..img_size {
-                let mut pixel = img.get_pixel_mut(x as u32, y as u32);
+                let pixel = img.get_pixel_mut(x as u32, y as u32);
 
                 if x <= scaled_border || y <= scaled_border {
                     pixel.0 = bg;
@@ -216,7 +217,7 @@ fn run(args: Args) -> Result<(), ErrorKind> {
                         return Err(ErrorKind::Warning(Warning::UnexpectedScaleOpt));
                     }
                 }
-                Some("png" | "jpg" | "jpeg") => {
+                Some("png" | "jpg") => {
                     qr.rst(output, args.scale.unwrap_or(25).into(), &args.bg, &args.fg)?
                 }
                 _ => return Err(ErrorKind::Error(Error::InvalidOutputExt)),
