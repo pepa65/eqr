@@ -25,3 +25,8 @@ jobs:
     - run: rustup update ${{ matrix.toolchain }} && rustup default ${{ matrix.toolchain }}
     - name: Build
       run: cargo build --verbose
+    - name: 'Upload Artifact'
+      uses: actions/upload-artifact@v4
+      with:
+        name: qr
+        path: target/release/qr

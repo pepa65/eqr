@@ -1,4 +1,4 @@
-# qr 0.3.0
+# qr 0.3.1
 **Encode text into svg/png/jpg/terminal format QR codes**
 
 ## Index
@@ -25,7 +25,7 @@ cargo install --git https://github.com/pepa65/qr --branch master
 
 ## Usage
 ```
-qr 0.3.0
+qr 0.3.1
 Marco Radocchia <marco.radocchia@outlook.com>, github.com/pepa65
 Encode text into svg/png/jpg/terminal format QR codes
 

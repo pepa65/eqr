@@ -1,4 +1,8 @@
 # Changelog
+## [0.3.1] - 2024-09-02
+### Added
+- Release binary
+
 ## [0.3.0] - 2024-09-02
 ### Added
 - Short flag `-L` for `--error-correction-level`
