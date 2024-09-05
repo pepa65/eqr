@@ -1,6 +1,6 @@
 [![Cargo build](https://github.com/pepa65/qr/actions/workflows/rust.yml/badge.svg)](https://github.com/pepa65/qr/actions/workflows/rust.yml)
 
-# qr 0.3.1
+# qr 0.3.2
 **Encode text into svg/png/jpg/terminal format QR codes**
 
 ## Index
@@ -36,7 +36,7 @@ The binary will be at `target/x86_64-unknown-linux-musl/release/qr`
 
 ## Usage
 ```
-qr 0.3.1
+qr 0.3.2
 Marco Radocchia <marco.radocchia@outlook.com>, github.com/pepa65
 Encode text into svg/png/jpg/terminal format QR codes
 

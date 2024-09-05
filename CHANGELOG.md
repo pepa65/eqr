@@ -1,4 +1,8 @@
 # Changelog
+## [0.3.2] - 2024-09-05
+### Changed
+- Static (musl) binary
+
 ## [0.3.1] - 2024-09-02
 ### Added
 - Release binary
