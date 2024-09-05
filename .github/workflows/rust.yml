@@ -22,11 +22,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - run: rustup update ${{ matrix.toolchain }} && rustup default ${{ matrix.toolchain }}
+    - run: |
+        rustup update ${{ matrix.toolchain }} && rustup default ${{ matrix.toolchain }}
+        rustup target add x86_64-unknown-linux-musl
     - name: Build
-      run: cargo build --release --verbose
+      run: |
+        env RUSTFLAGS='-C target-feature=+crt-static'
+        cargo build --release --verbose --target=x86_64-unknown-linux-musl
     - name: 'Upload Artifact'
       uses: actions/upload-artifact@v4
       with:
         name: qr
-        path: /home/runner/work/qr/qr/target/release/qr
+        path: /home/runner/work/qr/qr/target/x86_64-unknown-linux-musl/release/qr

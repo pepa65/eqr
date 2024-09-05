@@ -25,6 +25,15 @@ To build and install from master branch run:
 cargo install --git https://github.com/pepa65/qr --branch master
 ```
 
+#### Static build (avoiding GLIBC incompatibilities)
+```sh
+rustup target add x86_64-unknown-linux-musl
+export RUSTFLAGS='-C target-feature=+crt-static'
+cargo build --release --target=x86_64-unknown-linux-musl
+```
+
+The binary will be at `target/x86_64-unknown-linux-musl/release/qr`
+
 ## Usage
 ```
 qr 0.3.1
