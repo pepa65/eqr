@@ -67,7 +67,7 @@ impl QrOutput for Qr {
 
         write!(
             svg_str,
-                "<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" \
+            "<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" \
                   viewBox=\"0 0 {dimension} {dimension}\" width=\"{pix}\" height=\"{pix}\">\
                   <rect width=\"100%\" height=\"100%\" fill=\"#{bg}\"/><path d=\""
         )
@@ -189,12 +189,8 @@ fn run(args: Args) -> Result<(), ErrorKind> {
 
             // Determine output file type based on file extension.
             match output.extension().map(|ext| ext.to_str().unwrap()) {
-                Some("svg") => {
-                    qr.svg(output, i32::from(args.scale), &args.bg, &args.fg)?
-                }
-                Some("png" | "jpg") => {
-                    qr.rst(output, i32::from(args.scale), &args.bg, &args.fg)?
-                }
+                Some("svg") => qr.svg(output, i32::from(args.scale), &args.bg, &args.fg)?,
+                Some("png" | "jpg") => qr.rst(output, i32::from(args.scale), &args.bg, &args.fg)?,
                 _ => return Err(ErrorKind::Error(Error::InvalidOutputExt)),
             }
         }
