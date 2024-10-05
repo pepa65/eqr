@@ -1,17 +1,14 @@
 [package]
-name = "qr"
-version = "0.3.2"
-authors = ["Marco Radocchia <marco.radocchia@outlook.com", "github.com/pepa65"]
+name = "eqr"
+version = "1.0.0"
+authors = ["Marco Radocchia <marco.radocchia@outlook.com>", "github.com/pepa65 <pepa65@passchier.net>"]
 edition = "2021"
 rust-version = "1.62.0"
-description = "Encode text into svg/png/jpg/terminal format QR codes"
-readme = "README.md"
-repository = "https://github.com/pepa/qr"
+description = "Encode text into svg/png/jpg/terminal-format QR codes"
+repository = "https://github.com/pepa/eqr"
 license = "GPL-3.0-only"
-keywords = ["qr", "qrcode", "qr-code", "generator", "svg", "png", "jpg", "terminal"]
+keywords = ["qr", "encode", "generator", "svg", "png", "jpg", "terminal"]
 categories = ["command-line-utilities", "computer-vision", "encoding"]
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [[bin]]
 name = "qr"
@@ -37,5 +34,8 @@ lazy_static = { version = "1.4.0" }
 regex = { version = "1.6.0" }
 
 [profile.release]
-lto = true # link-time-optimization
-strip = true # strip symbols from binary
+opt-level = "z"
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true

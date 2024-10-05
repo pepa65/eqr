@@ -1,44 +1,27 @@
-[![Cargo build](https://github.com/pepa65/qr/actions/workflows/rust.yml/badge.svg)](https://github.com/pepa65/qr/actions/workflows/rust.yml)
+[![Cargo build](https://github.com/pepa65/eqr/actions/workflows/rust.yml/badge.svg)](https://github.com/pepa65/eqr/actions/workflows/rust.yml)
 
-# qr 0.3.2
-**Encode text into svg/png/jpg/terminal format QR codes**
-
-## Index
-- [Install](#install)
-  * [Cargo](#cargo)
-    - [Master branch](#master-branch)
-- [Usage](#usage)
-- [Changelog](#changelog)
-- [License](#license)
+# eqr 1.0.0
+**Encode text into svg/png/jpg/terminal-format QR codes**
 
 ## Install
-The following installation instructions assume a **Rust toolchain** (`rustc >=1.62.0`) installed
-on the system. In order to install such toolchain you can use `rustup`: see
-https://www.rust-lang.org/tools/install for further installation instructions and notes.
+If not installed yet, install a **Rust toolchain**, see https://www.rust-lang.org/tools/install
 
-### Cargo
-In order to install using Rust's package manager `cargo` follow instructions below.
+### Direct from repo
+`cargo install --git https://github.com/pepa65/eqr`
 
-#### Master branch
-To build and install from master branch run:
-```sh
-cargo install --git https://github.com/pepa65/qr --branch master
+### Static build (avoiding GLIBC incompatibilities)
 ```
-
-#### Static build (avoiding GLIBC incompatibilities)
-```sh
 rustup target add x86_64-unknown-linux-musl
-export RUSTFLAGS='-C target-feature=+crt-static'
-cargo build --release --target=x86_64-unknown-linux-musl
+cargo rel  # Alias in .cargo/config.toml
 ```
 
 The binary will be at `target/x86_64-unknown-linux-musl/release/qr`
 
 ## Usage
 ```
-qr 0.3.2
+eqr 1.0.0
 Marco Radocchia <marco.radocchia@outlook.com>, github.com/pepa65
-Encode text into svg/png/jpg/terminal format QR codes
+Encode text into svg/png/jpg/terminal-format QR codes
 
 USAGE:
     qr [OPTIONS] [STRING]

@@ -1,4 +1,9 @@
 # Changelog
+## [1.0.0] - 2024-10-05
+### Changed
+- Repo name to eqr
+- Pushed to crates.io
+
 ## [0.3.2] - 2024-09-05
 ### Changed
 - Static (musl) binary
@@ -11,6 +16,7 @@
 ### Added
 - Short flag `-L` for `--error-correction-level`
 - Atrributes width/height on svg element for scale
+
 ## Changed
 - Repo at github.com/pepa65/qr
 - Allow scale for svg
@@ -18,6 +24,7 @@
 - Fix help on fg/bg
 - No inverted colors on terminal
 - No `#` to specify hex colors
+
 ### Removed
 - xml/DOCTYPE headers from svg
 - Tabs from svg

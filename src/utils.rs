@@ -1,4 +1,4 @@
-// qr - Encode text into svg/png/jpg/terminal format QR codes
+// eqr - Encode text into svg/png/jpg/terminal-format QR codes
 
 /// Convert HEX color code to RGB values
 /// This function assumes `hex` parameter being a valid HEX color code.

@@ -1,4 +1,4 @@
-// qr - Encode text into svg/png/jpg/terminal format QR codes
+// eqr - Encode text into svg/png/jpg/terminal-format QR codes
 
 mod args;
 mod error;
