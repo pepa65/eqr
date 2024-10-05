@@ -7,7 +7,7 @@ rust-version = "1.62.0"
 description = "Encode text into svg/png/jpg/terminal-format QR codes"
 repository = "https://github.com/pepa/eqr"
 license = "GPL-3.0-only"
-keywords = ["qr", "encode", "generator", "svg", "png", "jpg", "terminal"]
+keywords = ["qr", "encode", "generator", "image", "terminal"]
 categories = ["command-line-utilities", "computer-vision", "encoding"]
 
 [[bin]]
