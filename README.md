@@ -1,16 +1,29 @@
 [![Cargo build](https://github.com/pepa65/eqr/actions/workflows/rust.yml/badge.svg)](https://github.com/pepa65/eqr/actions/workflows/rust.yml)
 
-# eqr 1.0.0
+# eqr 1.0.1
 **Encode text into svg/png/jpg/terminal-format QR codes**
 
-## Install
+## Install standalone single-binary
+```
+wget https://github.com/pepa65/eqr/releases/download/v1.0.1/qr
+sudo mv qr /usr/local/bin
+sudo chown root:root /usr/local/bin/qr
+sudo chmod +x /usr/local/bin/qr
+```
+
+## Install with cargo
 If not installed yet, install a **Rust toolchain**, see https://www.rust-lang.org/tools/install
+
+### Direct from crates.io
+`cargo install eqr`
 
 ### Direct from repo
 `cargo install --git https://github.com/pepa65/eqr`
 
 ### Static build (avoiding GLIBC incompatibilities)
 ```
+git clone https://github.com/pepa65/eqr
+cd eqr
 rustup target add x86_64-unknown-linux-musl
 cargo rel  # Alias in .cargo/config.toml
 ```
@@ -19,7 +32,7 @@ The binary will be at `target/x86_64-unknown-linux-musl/release/qr`
 
 ## Usage
 ```
-eqr 1.0.0
+eqr 1.0.1
 Marco Radocchia <marco.radocchia@outlook.com>, github.com/pepa65
 Encode text into svg/png/jpg/terminal-format QR codes
 
