@@ -1,6 +1,6 @@
 [![Cargo build](https://github.com/pepa65/eqr/actions/workflows/rust.yml/badge.svg)](https://github.com/pepa65/eqr/actions/workflows/rust.yml)
 
-# eqr 1.0.1
+# eqr 1.1.0
 **Encode text into svg/png/jpg/terminal-format QR codes**
 
 ## Install standalone single-binary
@@ -32,7 +32,7 @@ The binary will be at `target/x86_64-unknown-linux-musl/release/qr`
 
 ## Usage
 ```
-eqr 1.0.1
+eqr 1.1.0
 Marco Radocchia <marco.radocchia@outlook.com>, github.com/pepa65
 Encode text into svg/png/jpg/terminal-format QR codes
 
