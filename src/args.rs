@@ -31,15 +31,14 @@ pub fn parse_error_correction_level(ecl: &str) -> Result<QrCodeEcc, String> {
 
 /// A CLI utility to encode URLs or text into QR codes in various formats and colors.
 #[derive(Parser, Debug)]
-#[clap(
-    author = "Marco Radocchia <marco.radocchia@outlook.com>, github.com/pepa65",
-    version,
-    about,
-    long_about = None
-)]
+#[clap(version, about)]
+#[clap(help_template("\
+{before-help}{name} {version} - {about}
+{usage-heading} {usage}
+{all-args}{after-help}
+"))]
 pub struct Args {
-    /// Output file (supported file extensions: jpg, png, svg); omit to print QR code to
-    /// console.
+    /// Output file (supported file extensions: jpg, png, svg); omit to print QR code to console.
     #[clap(short, long, value_parser)]
     pub output: Option<PathBuf>,
 
