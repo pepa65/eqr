@@ -1,13 +1,13 @@
 [![Cargo build](https://github.com/pepa65/eqr/actions/workflows/rust.yml/badge.svg)](https://github.com/pepa65/eqr/actions/workflows/rust.yml)
 [![downloads](https://img.shields.io/crates/d/eqr.svg)](https://crates.io/crates/eqr)
 
-# eqr 1.1.3
+# eqr 1.1.4
 **Encode text into svg/png/jpg/terminal-format QR codes**
 
 ## Install
 ### Install standalone single-binary
 ```
-wget https://github.com/pepa65/eqr/releases/download/1.1.2/qr
+wget https://github.com/pepa65/eqr/releases/download/1.1.4/qr
 sudo mv qr /usr/local/bin
 sudo chown root:root /usr/local/bin/qr
 sudo chmod +x /usr/local/bin/qr
@@ -48,7 +48,7 @@ Only a linux-x86_64 (musl) binary available: `cargo-binstall eqr`
 
 ## Usage
 ```
-eqr 1.1.3 - Encode text into svg/png/jpg/terminal-format QR codes
+eqr 1.1.4 - Encode text into svg/png/jpg/terminal-format QR codes
 USAGE:
     qr [OPTIONS] [STRING]
 ARGS:
