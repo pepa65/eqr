@@ -16,7 +16,7 @@ path = "src/main.rs"
 
 [package.metadata.binstall]
 pkg-url = "{repo}/releases/download/{version}/qr"
-pkg-fmt = ""
+pkg-fmt = "bin"
 disabled-strategies = ["quick-install", "compile"]
 target-family = "Linux"
 target-arch = "X86_64"
