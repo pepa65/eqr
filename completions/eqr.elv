@@ -18,16 +18,16 @@ set edit:completion:arg-completer[eqr] = {|@words|
     }
     var completions = [
         &'eqr'= {
-            cand -o 'Output file (supported file extensions: jpg, png, svg); omit to print QR code to console'
-            cand --output 'Output file (supported file extensions: jpg, png, svg); omit to print QR code to console'
+            cand -o 'Output file (jpg/png/svg), print to console if not given'
+            cand --output 'Output file (jpg/png/svg), print to console if not given'
+            cand -l 'QR error correction level (L: 7%, M: 15%, Q: 25%, H: 30%)'
+            cand --level 'QR error correction level (L: 7%, M: 15%, Q: 25%, H: 30%)'
+            cand -e 'Edge size (in unit blocks)'
+            cand --edge 'Edge size (in unit blocks)'
             cand -f 'Foreground RGB color (hex code)'
             cand --fg 'Foreground RGB color (hex code)'
             cand -b 'Background RGB color (hex code)'
             cand --bg 'Background RGB color (hex code)'
-            cand -B 'Border size (expressed in unit blocks)'
-            cand --border 'Border size (expressed in unit blocks)'
-            cand -L 'QR error correction level'
-            cand --error-correction-level 'QR error correction level'
             cand -s 'Scale factor (1..255)'
             cand --scale 'Scale factor (1..255)'
             cand -h 'Print help information'

@@ -1,10 +1,10 @@
 .ie \n(.g .ds Aq \(aq
 .el .ds Aq '
-.TH eqr 1  "eqr 1.1.5" 
+.TH eqr 1  "eqr 1.2.0" 
 .SH NAME
 eqr \- Encode text into svg/png/jpg/terminal\-format QR codes
 .SH SYNOPSIS
-\fBqr\fR [\fB\-h\fR|\fB\-\-help\fR] [\fB\-V\fR|\fB\-\-version\fR] [\fB\-o\fR|\fB\-\-output\fR] [\fB\-f\fR|\fB\-\-fg\fR] [\fB\-b\fR|\fB\-\-bg\fR] [\fB\-B\fR|\fB\-\-border\fR] [\fB\-L\fR|\fB\-\-error\-correction\-level\fR] [\fB\-s\fR|\fB\-\-scale\fR] [\fISTRING\fR] 
+\fBqr\fR [\fB\-h\fR|\fB\-\-help\fR] [\fB\-V\fR|\fB\-\-version\fR] [\fB\-o\fR|\fB\-\-output\fR] [\fB\-l\fR|\fB\-\-level\fR] [\fB\-e\fR|\fB\-\-edge\fR] [\fB\-f\fR|\fB\-\-fg\fR] [\fB\-b\fR|\fB\-\-bg\fR] [\fB\-s\fR|\fB\-\-scale\fR] [\fISTRING\fR] 
 .SH DESCRIPTION
 Encode text into svg/png/jpg/terminal\-format QR codes
 .SH OPTIONS
@@ -16,7 +16,13 @@ Print help information
 Print version information
 .TP
 \fB\-o\fR, \fB\-\-output\fR=\fIOUTPUT\fR
-Output file (supported file extensions: jpg, png, svg); omit to print QR code to console
+Output file (jpg/png/svg), print to console if not given
+.TP
+\fB\-l\fR, \fB\-\-level\fR=\fIERROR_CORRECTION_LEVEL\fR [default: M]
+QR error correction level (L: 7%, M: 15%, Q: 25%, H: 30%)
+.TP
+\fB\-e\fR, \fB\-\-edge\fR=\fIBORDER\fR [default: 2]
+Edge size (in unit blocks)
 .TP
 \fB\-f\fR, \fB\-\-fg\fR=\fIFG\fR [default: 000]
 Foreground RGB color (hex code)
@@ -24,16 +30,10 @@ Foreground RGB color (hex code)
 \fB\-b\fR, \fB\-\-bg\fR=\fIBG\fR [default: fff]
 Background RGB color (hex code)
 .TP
-\fB\-B\fR, \fB\-\-border\fR=\fIBORDER\fR [default: 1]
-Border size (expressed in unit blocks)
-.TP
-\fB\-L\fR, \fB\-\-error\-correction\-level\fR=\fIERROR_CORRECTION_LEVEL\fR [default: medium]
-QR error correction level
-.TP
 \fB\-s\fR, \fB\-\-scale\fR=\fISCALE\fR [default: 16]
 Scale factor (1..255)
 .TP
 [\fISTRING\fR]
 String to encode
 .SH VERSION
-v1.1.5
+v1.2.0

@@ -9,13 +9,10 @@ use termcolor::{BufferWriter, Color, ColorChoice, ColorSpec, WriteColor};
 pub enum Error {
 	/// Occurs when unable to generate QR code.
 	QrCodeErr(String),
-
 	/// Occurs when user choses unsupported output file extension.
 	InvalidOutputExt,
-
 	/// Occurs when unable to generate SVG output file.
 	SvgOutputErr(String),
-
 	/// Occurs when unable to generate raster image output file.
 	RasterOutputErr(String),
 }
@@ -31,22 +28,18 @@ impl ErrorKind {
 			true => ColorChoice::Auto,
 			false => ColorChoice::Never,
 		};
-
 		// Color based on ErrorKind variant:
 		//  * Warning -> ("warning:", Yellow)
 		//  * Error -> ("error:", Red)
 		let (prefix, color) = match self {
 			Self::Error(_) => ("error", Some(Color::Red)),
 		};
-
 		let writer = BufferWriter::stderr(color_choice);
 		let mut buffer = writer.buffer();
-
 		buffer.set_color(ColorSpec::new().set_fg(color).set_bold(true))?;
 		write!(&mut buffer, "{}: ", prefix)?;
 		buffer.reset()?;
 		writeln!(&mut buffer, "{}", self)?;
-
 		writer.print(&buffer)
 	}
 }

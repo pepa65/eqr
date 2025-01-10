@@ -1,13 +1,13 @@
 [![Cargo build](https://github.com/pepa65/eqr/actions/workflows/rust.yml/badge.svg)](https://github.com/pepa65/eqr/actions/workflows/rust.yml)
 [![downloads](https://img.shields.io/crates/d/eqr.svg)](https://crates.io/crates/eqr)
 
-# eqr 1.1.5
+# eqr 1.2.0
 **Encode text into svg/png/jpg/terminal-format QR codes**
 
 ## Install
 ### Install standalone single-binary
 ```
-wget https://github.com/pepa65/eqr/releases/download/1.1.5/qr
+wget https://github.com/pepa65/eqr/releases/download/1.2.0/qr
 sudo mv qr /usr/local/bin
 sudo chown root:root /usr/local/bin/qr
 sudo chmod +x /usr/local/bin/qr
@@ -50,34 +50,33 @@ It will be installed in `~/.cargo/bin/` which still needs to be added to `PATH`!
 
 ## Usage
 ```
-eqr 1.1.5 - Encode text into svg/png/jpg/terminal-format QR codes
-USAGE:
-    qr [OPTIONS] [STRING]
+eqr 1.2.0 - Encode text into svg/png/jpg/terminal-format QR codes
+USAGE: qr [OPTIONS] [STRING]
 ARGS:
     <STRING>    String to encode
 
 OPTIONS:
-    -b, --bg <BG>
-            Background RGB color (hex code) [default: fff]
+    -o, --output <OUTPUT>
+            Output file (jpg/png/svg), print to console if not given
 
-    -B, --border <BORDER>
-            Border size (expressed in unit blocks) [default: 1]
+    -l, --level <ERROR_CORRECTION_LEVEL>
+            QR error correction level (L: 7%, M: 15%, Q: 25%, H: 30%) [default: M] [possible values:
+            L, low, M, medium, Q, quartile, H, high]
+
+    -e, --edge <BORDER>
+            Edge size (in unit blocks) [default: 2]
 
     -f, --fg <FG>
             Foreground RGB color (hex code) [default: 000]
 
-    -h, --help
-            Print help information
-
-    -L, --error-correction-level <ERROR_CORRECTION_LEVEL>
-            QR error correction level [default: medium] [possible values: low, medium, quartile,
-            high]
-
-    -o, --output <OUTPUT>
-            Output file (supported file extensions: jpg, png, svg); omit to print QR code to console
+    -b, --bg <BG>
+            Background RGB color (hex code) [default: fff]
 
     -s, --scale <SCALE>
             Scale factor (1..255) [default: 16]
+
+    -h, --help
+            Print help information
 
     -V, --version
             Print version information

@@ -19,7 +19,7 @@ _eqr() {
 
     case "${cmd}" in
         eqr)
-            opts="-h -V -o -f -b -B -L -s --help --version --output --fg --bg --border --error-correction-level --scale <STRING>"
+            opts="-h -V -o -l -e -f -b -s --help --version --output --level --edge --fg --bg --scale <STRING>"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 1 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
@@ -30,6 +30,22 @@ _eqr() {
                     return 0
                     ;;
                 -o)
+                    COMPREPLY=($(compgen -f "${cur}"))
+                    return 0
+                    ;;
+                --level)
+                    COMPREPLY=($(compgen -W "L low M medium Q quartile H high" -- "${cur}"))
+                    return 0
+                    ;;
+                -l)
+                    COMPREPLY=($(compgen -W "L low M medium Q quartile H high" -- "${cur}"))
+                    return 0
+                    ;;
+                --edge)
+                    COMPREPLY=($(compgen -f "${cur}"))
+                    return 0
+                    ;;
+                -e)
                     COMPREPLY=($(compgen -f "${cur}"))
                     return 0
                     ;;
@@ -47,22 +63,6 @@ _eqr() {
                     ;;
                 -b)
                     COMPREPLY=($(compgen -f "${cur}"))
-                    return 0
-                    ;;
-                --border)
-                    COMPREPLY=($(compgen -f "${cur}"))
-                    return 0
-                    ;;
-                -B)
-                    COMPREPLY=($(compgen -f "${cur}"))
-                    return 0
-                    ;;
-                --error-correction-level)
-                    COMPREPLY=($(compgen -W "low medium quartile high" -- "${cur}"))
-                    return 0
-                    ;;
-                -L)
-                    COMPREPLY=($(compgen -W "low medium quartile high" -- "${cur}"))
                     return 0
                     ;;
                 --scale)

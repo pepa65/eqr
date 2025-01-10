@@ -21,16 +21,16 @@ Register-ArgumentCompleter -Native -CommandName 'eqr' -ScriptBlock {
 
     $completions = @(switch ($command) {
         'eqr' {
-            [CompletionResult]::new('-o', 'o', [CompletionResultType]::ParameterName, 'Output file (supported file extensions: jpg, png, svg); omit to print QR code to console')
-            [CompletionResult]::new('--output', 'output', [CompletionResultType]::ParameterName, 'Output file (supported file extensions: jpg, png, svg); omit to print QR code to console')
+            [CompletionResult]::new('-o', 'o', [CompletionResultType]::ParameterName, 'Output file (jpg/png/svg), print to console if not given')
+            [CompletionResult]::new('--output', 'output', [CompletionResultType]::ParameterName, 'Output file (jpg/png/svg), print to console if not given')
+            [CompletionResult]::new('-l', 'l', [CompletionResultType]::ParameterName, 'QR error correction level (L: 7%, M: 15%, Q: 25%, H: 30%)')
+            [CompletionResult]::new('--level', 'level', [CompletionResultType]::ParameterName, 'QR error correction level (L: 7%, M: 15%, Q: 25%, H: 30%)')
+            [CompletionResult]::new('-e', 'e', [CompletionResultType]::ParameterName, 'Edge size (in unit blocks)')
+            [CompletionResult]::new('--edge', 'edge', [CompletionResultType]::ParameterName, 'Edge size (in unit blocks)')
             [CompletionResult]::new('-f', 'f', [CompletionResultType]::ParameterName, 'Foreground RGB color (hex code)')
             [CompletionResult]::new('--fg', 'fg', [CompletionResultType]::ParameterName, 'Foreground RGB color (hex code)')
             [CompletionResult]::new('-b', 'b', [CompletionResultType]::ParameterName, 'Background RGB color (hex code)')
             [CompletionResult]::new('--bg', 'bg', [CompletionResultType]::ParameterName, 'Background RGB color (hex code)')
-            [CompletionResult]::new('-B', 'B', [CompletionResultType]::ParameterName, 'Border size (expressed in unit blocks)')
-            [CompletionResult]::new('--border', 'border', [CompletionResultType]::ParameterName, 'Border size (expressed in unit blocks)')
-            [CompletionResult]::new('-L', 'L', [CompletionResultType]::ParameterName, 'QR error correction level')
-            [CompletionResult]::new('--error-correction-level', 'error-correction-level', [CompletionResultType]::ParameterName, 'QR error correction level')
             [CompletionResult]::new('-s', 's', [CompletionResultType]::ParameterName, 'Scale factor (1..255)')
             [CompletionResult]::new('--scale', 'scale', [CompletionResultType]::ParameterName, 'Scale factor (1..255)')
             [CompletionResult]::new('-h', 'h', [CompletionResultType]::ParameterName, 'Print help information')
