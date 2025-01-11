@@ -18,8 +18,8 @@ set edit:completion:arg-completer[eqr] = {|@words|
     }
     var completions = [
         &'eqr'= {
-            cand -o 'Output file (jpg/png/svg), print to console if not given'
-            cand --output 'Output file (jpg/png/svg), print to console if not given'
+            cand -o 'Output file (jpg/png/svg)'
+            cand --output 'Output file (jpg/png/svg)'
             cand -l 'QR error correction level (L: 7%, M: 15%, Q: 25%, H: 30%)'
             cand --level 'QR error correction level (L: 7%, M: 15%, Q: 25%, H: 30%)'
             cand -e 'Edge size (in unit blocks)'
@@ -34,6 +34,8 @@ set edit:completion:arg-completer[eqr] = {|@words|
             cand --help 'Print help information'
             cand -V 'Print version information'
             cand --version 'Print version information'
+            cand -t 'Output to terminal'
+            cand --terminal 'Output to terminal'
         }
     ]
     $completions[$command]

@@ -21,8 +21,8 @@ Register-ArgumentCompleter -Native -CommandName 'eqr' -ScriptBlock {
 
     $completions = @(switch ($command) {
         'eqr' {
-            [CompletionResult]::new('-o', 'o', [CompletionResultType]::ParameterName, 'Output file (jpg/png/svg), print to console if not given')
-            [CompletionResult]::new('--output', 'output', [CompletionResultType]::ParameterName, 'Output file (jpg/png/svg), print to console if not given')
+            [CompletionResult]::new('-o', 'o', [CompletionResultType]::ParameterName, 'Output file (jpg/png/svg)')
+            [CompletionResult]::new('--output', 'output', [CompletionResultType]::ParameterName, 'Output file (jpg/png/svg)')
             [CompletionResult]::new('-l', 'l', [CompletionResultType]::ParameterName, 'QR error correction level (L: 7%, M: 15%, Q: 25%, H: 30%)')
             [CompletionResult]::new('--level', 'level', [CompletionResultType]::ParameterName, 'QR error correction level (L: 7%, M: 15%, Q: 25%, H: 30%)')
             [CompletionResult]::new('-e', 'e', [CompletionResultType]::ParameterName, 'Edge size (in unit blocks)')
@@ -37,6 +37,8 @@ Register-ArgumentCompleter -Native -CommandName 'eqr' -ScriptBlock {
             [CompletionResult]::new('--help', 'help', [CompletionResultType]::ParameterName, 'Print help information')
             [CompletionResult]::new('-V', 'V', [CompletionResultType]::ParameterName, 'Print version information')
             [CompletionResult]::new('--version', 'version', [CompletionResultType]::ParameterName, 'Print version information')
+            [CompletionResult]::new('-t', 't', [CompletionResultType]::ParameterName, 'Output to terminal')
+            [CompletionResult]::new('--terminal', 'terminal', [CompletionResultType]::ParameterName, 'Output to terminal')
             break
         }
     })

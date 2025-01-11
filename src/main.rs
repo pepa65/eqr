@@ -34,18 +34,18 @@ impl Qr {
 
 /// Trait defining methods to output QR code to various formats
 trait QrOutput {
-	/// Create SVG file containing the QR code
+	/// Create SVG file of the QR code
 	fn svg(&self, output: &Path, scale: i32, bg: &str, fg: &str) -> Result<(), ErrorKind>;
 
-	/// Create raster image (png|jpg) file containing the QR code
+	/// Create raster image (png|jpg) file of the QR code
 	fn rst(&self, output: &Path, scale: i32, bg: &str, fg: &str) -> Result<(), ErrorKind>;
 
-	/// Print QR code to the console
-	fn console(&self);
+	/// Output QR to terminal
+	fn terminal(&self);
 }
 
 impl QrOutput for Qr {
-	/// Create SVG file containing the QR code
+	/// Create SVG file of the QR code
 	fn svg(&self, output: &Path, scale: i32, bg: &str, fg: &str) -> Result<(), ErrorKind> {
 		// Create output file
 		let mut file = match fs::File::create(output) {
@@ -85,7 +85,7 @@ impl QrOutput for Qr {
 		Ok(())
 	}
 
-	/// Create raster image (png|jpg) file containing the QR code
+	/// Create raster image (png|jpg) file of the QR code
 	fn rst(&self, output: &Path, scale: i32, bg: &str, fg: &str) -> Result<(), ErrorKind> {
 		// Convert colors to RGB values
 		let fg = hex_to_rgb(fg);
@@ -117,8 +117,8 @@ impl QrOutput for Qr {
 		Ok(())
 	}
 
-	/// Print QR code to standard output
-	fn console(&self) {
+	/// Output QR code to terminal
+	fn terminal(&self) {
 		for y in -self.border..self.data.size() + self.border {
 			for x in -self.border..self.data.size() + self.border {
 				print!("{0}{0}", if self.data.get_module(x, y) { ' ' } else { '█' });
@@ -128,7 +128,7 @@ impl QrOutput for Qr {
 	}
 }
 
-/// Runs the program & catches errors
+/// Run the program and catch errors
 fn run(args: Args) -> Result<(), ErrorKind> {
 	// If string to encode is not passed in as CLI argument, check stdin for piped string
 	let string = args.string.unwrap_or_else(|| {
@@ -152,29 +152,27 @@ fn run(args: Args) -> Result<(), ErrorKind> {
 		Err(err) => return Err(ErrorKind::Error(Error::QrCodeErr(err.to_string()))),
 	};
 
-	// Print to stdout if args.output is None, otherwhise print to file
-	match &args.output {
-		Some(output) => {
-			// Check if output file exists and if so ask for overwrite
-			if output.is_file()
-				&& !Confirm::with_theme(&ColorfulTheme::default())
-					.with_prompt(format!("Overwrite {:?}?", output))
-					.interact()
-					.expect("dialog interaction failed")
-			{
-				return Ok(());
-			}
+	// Check if output file exists and if so ask for overwrite
+	if args.output.is_file()
+		&& !Confirm::with_theme(&ColorfulTheme::default())
+			.with_prompt(format!("Overwrite {:?}?", &args.output))
+			.interact()
+			.expect("dialog interaction failed")
+	{
+		return Ok(());
+	}
 
-			// Determine output file type based on file extension
-			match output.extension().map(|ext| ext.to_str().unwrap()) {
-				Some("svg") => qr.svg(output, i32::from(args.scale), &args.bg, &args.fg)?,
-				Some("png" | "jpg") => qr.rst(output, i32::from(args.scale), &args.bg, &args.fg)?,
-				_ => return Err(ErrorKind::Error(Error::InvalidOutputExt)),
-			}
-		}
-		// When no output file is specified, print QR code to stdout
-		None => qr.console(),
+	// Determine output file type based on file extension
+	match &args.output.extension().map(|ext| ext.to_str().unwrap()) {
+		Some("svg") => qr.svg(&args.output, i32::from(args.scale), &args.bg, &args.fg)?,
+		Some("png" | "jpg") => qr.rst(&args.output, i32::from(args.scale), &args.bg, &args.fg)?,
+		_ => return Err(ErrorKind::Error(Error::InvalidOutputExt)),
 	};
+
+	// Output to terminal if args.terminal is true
+	if args.terminal {
+		qr.terminal()
+	}
 
 	Ok(())
 }

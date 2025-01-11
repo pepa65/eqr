@@ -1,13 +1,13 @@
 [![Cargo build](https://github.com/pepa65/eqr/actions/workflows/rust.yml/badge.svg)](https://github.com/pepa65/eqr/actions/workflows/rust.yml)
 [![downloads](https://img.shields.io/crates/d/eqr.svg)](https://crates.io/crates/eqr)
 
-# eqr 1.2.0
+# eqr 1.3.0
 **Encode text into svg/png/jpg/terminal-format QR codes**
 
 ## Install
 ### Install standalone single-binary
 ```
-wget https://github.com/pepa65/eqr/releases/download/1.2.0/qr
+wget https://github.com/pepa65/eqr/releases/download/1.3.0/qr
 sudo mv qr /usr/local/bin
 sudo chown root:root /usr/local/bin/qr
 sudo chmod +x /usr/local/bin/qr
@@ -50,14 +50,17 @@ It will be installed in `~/.cargo/bin/` which still needs to be added to `PATH`!
 
 ## Usage
 ```
-eqr 1.2.0 - Encode text into svg/png/jpg/terminal-format QR codes
-USAGE: qr [OPTIONS] [STRING]
+eqr 1.3.0 - Encode text into svg/png/jpg/terminal-format QR codes
+USAGE: qr [OPTIONS] <STRING>
 ARGS:
     <STRING>    String to encode
 
 OPTIONS:
     -o, --output <OUTPUT>
-            Output file (jpg/png/svg), print to console if not given
+            Output file (jpg/png/svg) [default: qr.png]
+
+    -t, --terminal
+            Output to terminal
 
     -l, --level <ERROR_CORRECTION_LEVEL>
             QR error correction level (L: 7%, M: 15%, Q: 25%, H: 30%) [default: M] [possible values:

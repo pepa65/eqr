@@ -1,10 +1,10 @@
 .ie \n(.g .ds Aq \(aq
 .el .ds Aq '
-.TH eqr 1  "eqr 1.2.0" 
+.TH eqr 1  "eqr 1.3.0" 
 .SH NAME
 eqr \- Encode text into svg/png/jpg/terminal\-format QR codes
 .SH SYNOPSIS
-\fBqr\fR [\fB\-h\fR|\fB\-\-help\fR] [\fB\-V\fR|\fB\-\-version\fR] [\fB\-o\fR|\fB\-\-output\fR] [\fB\-l\fR|\fB\-\-level\fR] [\fB\-e\fR|\fB\-\-edge\fR] [\fB\-f\fR|\fB\-\-fg\fR] [\fB\-b\fR|\fB\-\-bg\fR] [\fB\-s\fR|\fB\-\-scale\fR] [\fISTRING\fR] 
+\fBqr\fR [\fB\-h\fR|\fB\-\-help\fR] [\fB\-V\fR|\fB\-\-version\fR] [\fB\-o\fR|\fB\-\-output\fR] [\fB\-t\fR|\fB\-\-terminal\fR] [\fB\-l\fR|\fB\-\-level\fR] [\fB\-e\fR|\fB\-\-edge\fR] [\fB\-f\fR|\fB\-\-fg\fR] [\fB\-b\fR|\fB\-\-bg\fR] [\fB\-s\fR|\fB\-\-scale\fR] <\fISTRING\fR> 
 .SH DESCRIPTION
 Encode text into svg/png/jpg/terminal\-format QR codes
 .SH OPTIONS
@@ -15,8 +15,11 @@ Print help information
 \fB\-V\fR, \fB\-\-version\fR
 Print version information
 .TP
-\fB\-o\fR, \fB\-\-output\fR=\fIOUTPUT\fR
-Output file (jpg/png/svg), print to console if not given
+\fB\-o\fR, \fB\-\-output\fR=\fIOUTPUT\fR [default: qr.png]
+Output file (jpg/png/svg)
+.TP
+\fB\-t\fR, \fB\-\-terminal\fR
+Output to terminal
 .TP
 \fB\-l\fR, \fB\-\-level\fR=\fIERROR_CORRECTION_LEVEL\fR [default: M]
 QR error correction level (L: 7%, M: 15%, Q: 25%, H: 30%)
@@ -33,7 +36,7 @@ Background RGB color (hex code)
 \fB\-s\fR, \fB\-\-scale\fR=\fISCALE\fR [default: 16]
 Scale factor (1..255)
 .TP
-[\fISTRING\fR]
+<\fISTRING\fR>
 String to encode
 .SH VERSION
-v1.2.0
+v1.3.0

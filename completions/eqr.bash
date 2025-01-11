@@ -19,7 +19,7 @@ _eqr() {
 
     case "${cmd}" in
         eqr)
-            opts="-h -V -o -l -e -f -b -s --help --version --output --level --edge --fg --bg --scale <STRING>"
+            opts="-h -V -o -t -l -e -f -b -s --help --version --output --terminal --level --edge --fg --bg --scale <STRING>"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 1 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0

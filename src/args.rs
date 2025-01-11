@@ -20,14 +20,10 @@ pub fn parse_hex_color(hex: &str) -> Result<String, String> {
 /// Parse QR error correction level (assumes ecl being one of ["L", "low", "M", "medium", "Q", "quartile", "H", "high"])
 pub fn parse_error_correction_level(ecl: &str) -> Result<QrCodeEcc, String> {
 	Ok(match ecl {
-		"L" => QrCodeEcc::Low,
-		"low" => QrCodeEcc::Low,
-		"M" => QrCodeEcc::Medium,
-		"medium" => QrCodeEcc::Medium,
-		"Q" => QrCodeEcc::Quartile,
-		"quartile" => QrCodeEcc::Quartile,
-		"H" => QrCodeEcc::High,
-		"high" => QrCodeEcc::High,
+		"L" | "low" => QrCodeEcc::Low,
+		"M" | "medium" => QrCodeEcc::Medium,
+		"Q" | "quartile" => QrCodeEcc::Quartile,
+		"H" | "high" => QrCodeEcc::High,
 		_ => return Err("invalid error correction level".to_string()),
 	})
 }
@@ -43,9 +39,13 @@ pub fn parse_error_correction_level(ecl: &str) -> Result<QrCodeEcc, String> {
 "
 ))]
 pub struct Args {
-	/// Output file (jpg/png/svg), print to console if not given
-	#[clap(short, long, value_parser, verbatim_doc_comment)]
-	pub output: Option<PathBuf>,
+	/// Output file (jpg/png/svg)
+	#[clap(short, long, value_parser, default_value = "qr.png")]
+	pub output: PathBuf,
+
+	/// Output to terminal
+	#[clap(short, long)]
+	pub terminal: bool,
 
 	/// QR error correction level (L: 7%, M: 15%, Q: 25%, H: 30%)
 	#[clap(
@@ -65,7 +65,7 @@ pub struct Args {
 	#[clap(
 		short,
 		long,
-		requires = "output",
+		conflicts_with = "terminal",
 		default_value = "000",
 		value_parser = parse_hex_color
 	)]
@@ -75,17 +75,17 @@ pub struct Args {
 	#[clap(
 		short,
 		long,
-		requires = "output",
+		conflicts_with = "terminal",
 		default_value = "fff",
 		value_parser = parse_hex_color
 	)]
 	pub bg: String,
 
 	/// Scale factor (1..255)
-	#[clap(short, long, requires = "output", default_value_t = 16, value_parser)]
+	#[clap(short, long, conflicts_with = "terminal", default_value_t = 16, value_parser)]
 	pub scale: u8,
 
 	/// String to encode
-	#[clap(value_parser)]
+	#[clap(required = true, value_parser)]
 	pub string: Option<String>,
 }

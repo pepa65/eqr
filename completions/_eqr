@@ -15,23 +15,25 @@ _eqr() {
 
     local context curcontext="$curcontext" state line
     _arguments "${_arguments_options[@]}" \
-'*-o+[Output file (jpg/png/svg), print to console if not given]:OUTPUT:_files' \
-'*--output=[Output file (jpg/png/svg), print to console if not given]:OUTPUT:_files' \
+'*-o+[Output file (jpg/png/svg)]:OUTPUT:_files' \
+'*--output=[Output file (jpg/png/svg)]:OUTPUT:_files' \
 '*-l+[QR error correction level (L: 7%, M: 15%, Q: 25%, H: 30%)]:ERROR_CORRECTION_LEVEL:(L low M medium Q quartile H high)' \
 '*--level=[QR error correction level (L: 7%, M: 15%, Q: 25%, H: 30%)]:ERROR_CORRECTION_LEVEL:(L low M medium Q quartile H high)' \
 '*-e+[Edge size (in unit blocks)]:BORDER: ' \
 '*--edge=[Edge size (in unit blocks)]:BORDER: ' \
-'*-f+[Foreground RGB color (hex code)]:FG: ' \
-'*--fg=[Foreground RGB color (hex code)]:FG: ' \
-'*-b+[Background RGB color (hex code)]:BG: ' \
-'*--bg=[Background RGB color (hex code)]:BG: ' \
-'*-s+[Scale factor (1..255)]:SCALE: ' \
-'*--scale=[Scale factor (1..255)]:SCALE: ' \
+'(-t --terminal)*-f+[Foreground RGB color (hex code)]:FG: ' \
+'(-t --terminal)*--fg=[Foreground RGB color (hex code)]:FG: ' \
+'(-t --terminal)*-b+[Background RGB color (hex code)]:BG: ' \
+'(-t --terminal)*--bg=[Background RGB color (hex code)]:BG: ' \
+'(-t --terminal)*-s+[Scale factor (1..255)]:SCALE: ' \
+'(-t --terminal)*--scale=[Scale factor (1..255)]:SCALE: ' \
 '-h[Print help information]' \
 '--help[Print help information]' \
 '-V[Print version information]' \
 '--version[Print version information]' \
-'::string -- String to encode:' \
+'-t[Output to terminal]' \
+'--terminal[Output to terminal]' \
+':string -- String to encode:' \
 && ret=0
 }
 
