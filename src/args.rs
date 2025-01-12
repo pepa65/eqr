@@ -1,10 +1,9 @@
 // eqr - Encode text into svg/png/jpg/terminal-format QR codes
 
-pub use clap::{AppSettings::DeriveDisplayOrder, Parser};
+pub use clap::Parser;
 use lazy_static::lazy_static;
 use qrcodegen::QrCodeEcc;
 use regex::Regex;
-use std::path::PathBuf;
 
 /// Parse hex code colors
 pub fn parse_hex_color(hex: &str) -> Result<String, String> {
@@ -30,7 +29,7 @@ pub fn parse_error_correction_level(ecl: &str) -> Result<QrCodeEcc, String> {
 
 /// Encode text into svg/png/jpg/terminal-format QR codes
 #[derive(Parser, Debug)]
-#[clap(version, about, global_settings=&[DeriveDisplayOrder])]
+#[clap(version, about)]
 #[clap(help_template(
 	"\
 {before-help}{name} {version} - {about}
@@ -39,9 +38,9 @@ pub fn parse_error_correction_level(ecl: &str) -> Result<QrCodeEcc, String> {
 "
 ))]
 pub struct Args {
-	/// Output file (jpg/png/svg)
-	#[clap(short, long, value_parser, default_value = "qr.png")]
-	pub output: PathBuf,
+	/// Output file (jpg/png/svg) [default: qr.png]
+	#[clap(short, long, value_parser)]
+	pub output: Option<String>,
 
 	/// Output to terminal
 	#[clap(short, long)]
@@ -52,7 +51,6 @@ pub struct Args {
 		short = 'l',
 		long = "level",
 		default_value = "M",
-		possible_values = ["L", "low", "M", "medium", "Q", "quartile", "H", "high"],
 		value_parser = parse_error_correction_level
 	)]
 	pub error_correction_level: QrCodeEcc,
@@ -85,7 +83,7 @@ pub struct Args {
 	#[clap(short, long, conflicts_with = "terminal", default_value_t = 16, value_parser)]
 	pub scale: u8,
 
-	/// String to encode
-	#[clap(required = true, value_parser)]
+	/// String to encode (can also be piped in)
+	#[clap(value_parser)]
 	pub string: Option<String>,
 }

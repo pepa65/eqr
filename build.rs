@@ -1,6 +1,6 @@
 use clap::CommandFactory;
 use clap_complete::{generate_to, Shell::*};
-use std::{env, fs};
+use std::{env, fs, path::PathBuf};
 
 // Include Args struct.
 include!("src/args.rs");

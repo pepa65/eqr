@@ -1,5 +1,5 @@
 _eqr() {
-    local i cur prev opts cmds
+    local i cur prev opts cmd
     COMPREPLY=()
     cur="${COMP_WORDS[COMP_CWORD]}"
     prev="${COMP_WORDS[COMP_CWORD-1]}"
@@ -8,8 +8,8 @@ _eqr() {
 
     for i in ${COMP_WORDS[@]}
     do
-        case "${i}" in
-            "$1")
+        case "${cmd},${i}" in
+            ",$1")
                 cmd="eqr"
                 ;;
             *)
@@ -19,7 +19,7 @@ _eqr() {
 
     case "${cmd}" in
         eqr)
-            opts="-h -V -o -t -l -e -f -b -s --help --version --output --terminal --level --edge --fg --bg --scale <STRING>"
+            opts="-o -t -l -e -f -b -s -h -V --output --terminal --level --edge --fg --bg --scale --help --version [STRING]"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 1 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
@@ -34,11 +34,11 @@ _eqr() {
                     return 0
                     ;;
                 --level)
-                    COMPREPLY=($(compgen -W "L low M medium Q quartile H high" -- "${cur}"))
+                    COMPREPLY=($(compgen -f "${cur}"))
                     return 0
                     ;;
                 -l)
-                    COMPREPLY=($(compgen -W "L low M medium Q quartile H high" -- "${cur}"))
+                    COMPREPLY=($(compgen -f "${cur}"))
                     return 0
                     ;;
                 --edge)
@@ -83,4 +83,8 @@ _eqr() {
     esac
 }
 
-complete -F _eqr -o bashdefault -o default eqr
+if [[ "${BASH_VERSINFO[0]}" -eq 4 && "${BASH_VERSINFO[1]}" -ge 4 || "${BASH_VERSINFO[0]}" -gt 4 ]]; then
+    complete -F _eqr -o nosort -o bashdefault -o default eqr
+else
+    complete -F _eqr -o bashdefault -o default eqr
+fi

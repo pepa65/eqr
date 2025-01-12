@@ -131,49 +131,53 @@ impl QrOutput for Qr {
 /// Run the program and catch errors
 fn run(args: Args) -> Result<(), ErrorKind> {
 	// If string to encode is not passed in as CLI argument, check stdin for piped string
-	let string = args.string.unwrap_or_else(|| {
+	let mut string = args.string.unwrap_or("".to_string());
+	if string.is_empty() {
 		if atty::is(atty::Stream::Stdin) {
-			clap::Command::new("qr [OPTIONS] [STRING]")
-				.error(
-					clap::ErrorKind::MissingRequiredArgument,
-					"Missing input string.\n\n\
-					Either provide it as a CLI argument or pipe it in from standard input.",
-				)
-				.exit();
-		} else {
-			let mut string = String::new();
-			io::stdin().lock().read_to_string(&mut string).unwrap();
-			string.trim_end().to_string()
-		}
-	});
+			return Err(ErrorKind::Error(Error::NoStringGiven()));
+		};
+		io::stdin().lock().read_to_string(&mut string).unwrap();
+		string = string.trim_end().to_string();
+		if string.is_empty() {
+			return Err(ErrorKind::Error(Error::NoStringPiped()));
+		};
+	};
 	// Generate QR code
 	let qr = match QrCode::encode_text(&string, args.error_correction_level) {
 		Ok(data) => Qr::new(data, args.border),
 		Err(err) => return Err(ErrorKind::Error(Error::QrCodeErr(err.to_string()))),
 	};
 
-	// Check if output file exists and if so ask for overwrite
-	if args.output.is_file()
-		&& !Confirm::with_theme(&ColorfulTheme::default())
-			.with_prompt(format!("Overwrite {:?}?", &args.output))
-			.interact()
-			.expect("dialog interaction failed")
-	{
-		return Ok(());
-	}
+	// Write file if output-flag given or no terminal-flag given
+	let mut out = match args.output {
+		Some(string) => string,
+		None => "".to_string(),
+	};
+	if !out.is_empty() || !args.terminal {
+		if out.is_empty() {
+			out = "qr.png".to_string()
+		};
+		let output = Path::new(&out);
+		// Check if output file exists and if so ask for overwrite
+		if output.is_file() {
+			let _ = Confirm::with_theme(&ColorfulTheme::default())
+				.with_prompt(format!("Overwrite {:?}?", &output))
+				.interact()
+				.expect("dialog interaction failed");
+		};
 
-	// Determine output file type based on file extension
-	match &args.output.extension().map(|ext| ext.to_str().unwrap()) {
-		Some("svg") => qr.svg(&args.output, i32::from(args.scale), &args.bg, &args.fg)?,
-		Some("png" | "jpg") => qr.rst(&args.output, i32::from(args.scale), &args.bg, &args.fg)?,
-		_ => return Err(ErrorKind::Error(Error::InvalidOutputExt)),
+		// Determine output file type based on file extension
+		match &output.extension().map(|ext| ext.to_str().unwrap()) {
+			Some("svg") => qr.svg(output, i32::from(args.scale), &args.bg, &args.fg)?,
+			Some("png" | "jpg") => qr.rst(output, i32::from(args.scale), &args.bg, &args.fg)?,
+			_ => return Err(ErrorKind::Error(Error::InvalidOutputExt)),
+		};
 	};
 
-	// Output to terminal if args.terminal is true
+	// Output to terminal if terminal-flag given
 	if args.terminal {
 		qr.terminal()
 	}
-
 	Ok(())
 }
 

@@ -14,26 +14,26 @@ _eqr() {
     fi
 
     local context curcontext="$curcontext" state line
-    _arguments "${_arguments_options[@]}" \
-'*-o+[Output file (jpg/png/svg)]:OUTPUT:_files' \
-'*--output=[Output file (jpg/png/svg)]:OUTPUT:_files' \
-'*-l+[QR error correction level (L: 7%, M: 15%, Q: 25%, H: 30%)]:ERROR_CORRECTION_LEVEL:(L low M medium Q quartile H high)' \
-'*--level=[QR error correction level (L: 7%, M: 15%, Q: 25%, H: 30%)]:ERROR_CORRECTION_LEVEL:(L low M medium Q quartile H high)' \
-'*-e+[Edge size (in unit blocks)]:BORDER: ' \
-'*--edge=[Edge size (in unit blocks)]:BORDER: ' \
-'(-t --terminal)*-f+[Foreground RGB color (hex code)]:FG: ' \
-'(-t --terminal)*--fg=[Foreground RGB color (hex code)]:FG: ' \
-'(-t --terminal)*-b+[Background RGB color (hex code)]:BG: ' \
-'(-t --terminal)*--bg=[Background RGB color (hex code)]:BG: ' \
-'(-t --terminal)*-s+[Scale factor (1..255)]:SCALE: ' \
-'(-t --terminal)*--scale=[Scale factor (1..255)]:SCALE: ' \
-'-h[Print help information]' \
-'--help[Print help information]' \
-'-V[Print version information]' \
-'--version[Print version information]' \
+    _arguments "${_arguments_options[@]}" : \
+'-o+[Output file (jpg/png/svg) \[default\: qr.png\]]:OUTPUT:_default' \
+'--output=[Output file (jpg/png/svg) \[default\: qr.png\]]:OUTPUT:_default' \
+'-l+[QR error correction level (L\: 7%, M\: 15%, Q\: 25%, H\: 30%)]:ERROR_CORRECTION_LEVEL:_default' \
+'--level=[QR error correction level (L\: 7%, M\: 15%, Q\: 25%, H\: 30%)]:ERROR_CORRECTION_LEVEL:_default' \
+'-e+[Edge size (in unit blocks)]:BORDER:_default' \
+'--edge=[Edge size (in unit blocks)]:BORDER:_default' \
+'(-t --terminal)-f+[Foreground RGB color (hex code)]:FG:_default' \
+'(-t --terminal)--fg=[Foreground RGB color (hex code)]:FG:_default' \
+'(-t --terminal)-b+[Background RGB color (hex code)]:BG:_default' \
+'(-t --terminal)--bg=[Background RGB color (hex code)]:BG:_default' \
+'(-t --terminal)-s+[Scale factor (1..255)]:SCALE:_default' \
+'(-t --terminal)--scale=[Scale factor (1..255)]:SCALE:_default' \
 '-t[Output to terminal]' \
 '--terminal[Output to terminal]' \
-':string -- String to encode:' \
+'-h[Print help]' \
+'--help[Print help]' \
+'-V[Print version]' \
+'--version[Print version]' \
+'::string -- String to encode (can also be piped in):_default' \
 && ret=0
 }
 
@@ -43,4 +43,8 @@ _eqr_commands() {
     _describe -t commands 'eqr commands' commands "$@"
 }
 
-_eqr "$@"
+if [ "$funcstack[1]" = "_eqr" ]; then
+    _eqr "$@"
+else
+    compdef _eqr eqr
+fi

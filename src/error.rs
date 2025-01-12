@@ -15,6 +15,10 @@ pub enum Error {
 	SvgOutputErr(String),
 	/// Occurs when unable to generate raster image output file.
 	RasterOutputErr(String),
+	/// Occurs when no string is piped in and no string given
+	NoStringPiped(),
+	/// Occurs when no string is given nor piped in
+	NoStringGiven(),
 }
 
 pub enum ErrorKind {
@@ -52,9 +56,9 @@ impl Display for ErrorKind {
 				Error::QrCodeErr(msg) => write!(f, "unable to generate QR code: {msg}"),
 				Error::InvalidOutputExt => write!(f, "invalid output file extension"),
 				Error::SvgOutputErr(msg) => write!(f, "unable to write SVG output file: {msg}"),
-				Error::RasterOutputErr(msg) => {
-					write!(f, "unable to write raster image file: {msg}")
-				}
+				Error::RasterOutputErr(msg) => write!(f, "unable to write raster image file: {msg}"),
+				Error::NoStringPiped() => write!(f, "no string piped into command"),
+				Error::NoStringGiven() => write!(f, "no string given on commandline"),
 			},
 		}
 	}
