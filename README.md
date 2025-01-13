@@ -1,6 +1,6 @@
 [![Cargo build](https://github.com/pepa65/eqr/actions/workflows/rust.yml/badge.svg)](https://github.com/pepa65/eqr/actions/workflows/rust.yml)
 [![Dependencies](https://deps.rs/repo/github/pepa65/eqr/status.svg)](https://deps.rs/repo/github/pepa65/eqr)
-[![Docs](https://img.shields.io/badge/Docs-eqr-blue)](https://docs.rs/repo/github/pepa65/eqr)
+[![Docs](https://img.shields.io/badge/Docs-eqr-blue)](https://docs.rs/crate/eqr/latest)
 [![License](https://img.shields.io/github/license/pepa65/eqr)](https://github.com/pepa65/eqr/blob/main/LICENSE)
 [![Downloads](https://img.shields.io/crates/d/eqr.svg)](https://crates.io/crates/eqr)
 
