@@ -1,4 +1,7 @@
 # Changelog
+## [1.4.3] - 2025-01-13
+- Set single dependency version
+
 ## [1.4.2] - 2025-01-13
 - Fix dependency version
 
