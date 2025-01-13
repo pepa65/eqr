@@ -1,4 +1,7 @@
 # Changelog
+## [1.4.2] - 2025-01-13
+- Fix dependency version
+
 ## [1.4.1] - 2025-01-13
 - Update dependencies
 - Changelog
