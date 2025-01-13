@@ -1,11 +1,13 @@
 [package]
 name = "eqr"
-version = "1.4.0"
+version = "1.4.1"
 authors = ["github.com/pepa65 <pepa65@passchier.net>", "Marco Radocchia <marco.radocchia@outlook.com>"]
 edition = "2021"
 rust-version = "1.70"
 description = "Encode text into svg/png/jpg/terminal-format QR codes"
 repository = "https://github.com/pepa65/eqr"
+documentation = "https://docs.rs/eqr"
+readme = "README.md"
 license = "GPL-3.0-only"
 keywords = ["qr", "encode", "generator", "image", "terminal"]
 categories = ["command-line-utilities", "computer-vision", "encoding"]

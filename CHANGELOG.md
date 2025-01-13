@@ -1,4 +1,40 @@
 # Changelog
+## [1.4.1] - 2025-01-13
+- Update dependencies
+- Changelog
+
+## [1.4.0] - 2025-01-12
+- Update dependencies
+- Compact help 
+
+## [1.3.0] - 2025-01-12
+- Default output file name
+- Terminal option
+
+## [1.2.0] - 2025-01-11
+- Redo options
+
+## [1.1.5] - 2024-11-13
+- Update deps
+
+## [1.1.4] - 2024-10-29
+- Repo
+
+## [1.1.3] - 2024-10-29
+- Cargo-binstall
+
+## [1.1.2] - 2024-10-23
+- Update deps
+
+## [1.1.1] - 2024-10-19
+- Enhance doc
+
+## [1.1.0] - 2024-10-08
+- Completions
+
+## [1.0.1] - 2024-10-05
+- Correct manpage
+
 ## [1.0.0] - 2024-10-05
 ### Changed
 - Repo name to eqr
@@ -17,7 +53,7 @@
 - Short flag `-L` for `--error-correction-level`
 - Atrributes width/height on svg element for scale
 
-## Changed
+### Changed
 - Repo at github.com/pepa65/qr
 - Allow scale for svg
 - Fix border on raster images
