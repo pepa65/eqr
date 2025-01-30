@@ -109,7 +109,7 @@ impl QrOutput for Qr {
 				pixel.0 = if self.data.get_module(x, y) { fg } else { bg };
 			}
 		}
-		let w = img_size / 8;
+		let w = img_size / 4;
 		let m = img_size / 2 - w / 2;
 		let logosmall = logo.resize(w as u32, w as u32, image::imageops::FilterType::Nearest).to_rgb8();
 		image::imageops::overlay(&mut img, &logosmall, m.into(), m.into());
