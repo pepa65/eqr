@@ -4,13 +4,13 @@
 [![License](https://img.shields.io/github/license/pepa65/eqr)](https://github.com/pepa65/eqr/blob/main/LICENSE)
 [![Downloads](https://img.shields.io/crates/d/eqr.svg)](https://crates.io/crates/eqr)
 
-# eqr 1.4.3
-**Encode text into svg/png/jpg/terminal-format QR codes**
+# eqr 1.5.0
+**Encode text into svg/png/jpg/terminal-format QR codes with optional logo**
 
 ## Install
 ### Install standalone single-binary
 ```
-wget https://github.com/pepa65/eqr/releases/download/1.4.3/qr
+wget https://github.com/pepa65/eqr/releases/download/1.5.0/qr
 sudo mv qr /usr/local/bin
 sudo chown root:root /usr/local/bin/qr
 sudo chmod +x /usr/local/bin/qr
@@ -53,19 +53,20 @@ It will be installed in `~/.cargo/bin/` which still needs to be added to `PATH`!
 
 ## Usage
 ```
-eqr 1.4.3 - Encode text into svg/png/jpg/terminal-format QR codes
+eqr 1.5.0 - Encode text into svg/png/jpg/terminal-format QR codes with optional logo
 Usage: qr [OPTIONS] [STRING]
 Arguments:
   [STRING]  String to encode (can also be piped in)
 
 Options:
   -o, --output <OUTPUT>                 Output file (jpg/png/svg) [default: qr.png]
-  -t, --terminal                        Output to terminal
+  -t, --terminal                        Output to terminal (never the logo)
   -l, --level <ERROR_CORRECTION_LEVEL>  QR error correction level (L: 7%, M: 15%, Q: 25%, H: 30%) [default: M]
+  -p, --path <LOGO_PATH>                Path to logo (png/jpg)
   -e, --edge <BORDER>                   Edge size (in unit blocks) [default: 2]
   -f, --fg <FG>                         Foreground RGB color (hex code) [default: 000]
   -b, --bg <BG>                         Background RGB color (hex code) [default: fff]
-  -s, --scale <SCALE>                   Scale factor (1..255) [default: 16]
+  -s, --scale <SCALE>                   Size of unit block in pixels (1..255) [default: 8]
   -h, --help                            Print help
   -V, --version                         Print version
 ```

@@ -16,7 +16,7 @@ pub fn parse_hex_color(hex: &str) -> Result<String, String> {
 	}
 }
 
-/// Parse QR error correction level (assumes ecl being one of ["L", "low", "M", "medium", "Q", "quartile", "H", "high"])
+/// Parse QR error correction level (ecl: L/low/M/medium/Q/quartile/H/high)
 pub fn parse_error_correction_level(ecl: &str) -> Result<QrCodeEcc, String> {
 	Ok(match ecl {
 		"L" | "low" => QrCodeEcc::Low,
@@ -42,7 +42,7 @@ pub struct Args {
 	#[clap(short, long, value_parser)]
 	pub output: Option<String>,
 
-	/// Output to terminal
+	/// Output to terminal (never the logo)
 	#[clap(short, long)]
 	pub terminal: bool,
 
@@ -54,6 +54,10 @@ pub struct Args {
 		value_parser = parse_error_correction_level
 	)]
 	pub error_correction_level: QrCodeEcc,
+
+	/// Path to logo (png/jpg)
+	#[clap(short = 'p', long = "path")]
+	pub logo_path: Option<std::path::PathBuf>,
 
 	/// Edge size (in unit blocks)
 	#[clap(short = 'e', long = "edge", default_value_t = 2, value_parser)]
@@ -79,8 +83,8 @@ pub struct Args {
 	)]
 	pub bg: String,
 
-	/// Scale factor (1..255)
-	#[clap(short, long, conflicts_with = "terminal", default_value_t = 16, value_parser)]
+	/// Size of unit block in pixels (1..255)
+	#[clap(short, long, conflicts_with = "terminal", default_value_t = 8, value_parser)]
 	pub scale: u8,
 
 	/// String to encode (can also be piped in)

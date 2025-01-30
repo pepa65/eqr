@@ -1,22 +1,25 @@
 .ie \n(.g .ds Aq \(aq
 .el .ds Aq '
-.TH eqr 1  "eqr 1.4.3" 
+.TH eqr 1  "eqr 1.5.0" 
 .SH NAME
-eqr \- Encode text into svg/png/jpg/terminal\-format QR codes
+eqr \- Encode text into svg/png/jpg/terminal\-format QR codes with optional logo
 .SH SYNOPSIS
-\fBqr\fR [\fB\-o\fR|\fB\-\-output\fR] [\fB\-t\fR|\fB\-\-terminal\fR] [\fB\-l\fR|\fB\-\-level\fR] [\fB\-e\fR|\fB\-\-edge\fR] [\fB\-f\fR|\fB\-\-fg\fR] [\fB\-b\fR|\fB\-\-bg\fR] [\fB\-s\fR|\fB\-\-scale\fR] [\fB\-h\fR|\fB\-\-help\fR] [\fB\-V\fR|\fB\-\-version\fR] [\fISTRING\fR] 
+\fBqr\fR [\fB\-o\fR|\fB\-\-output\fR] [\fB\-t\fR|\fB\-\-terminal\fR] [\fB\-l\fR|\fB\-\-level\fR] [\fB\-p\fR|\fB\-\-path\fR] [\fB\-e\fR|\fB\-\-edge\fR] [\fB\-f\fR|\fB\-\-fg\fR] [\fB\-b\fR|\fB\-\-bg\fR] [\fB\-s\fR|\fB\-\-scale\fR] [\fB\-h\fR|\fB\-\-help\fR] [\fB\-V\fR|\fB\-\-version\fR] [\fISTRING\fR] 
 .SH DESCRIPTION
-Encode text into svg/png/jpg/terminal\-format QR codes
+Encode text into svg/png/jpg/terminal\-format QR codes with optional logo
 .SH OPTIONS
 .TP
 \fB\-o\fR, \fB\-\-output\fR=\fIOUTPUT\fR
 Output file (jpg/png/svg) [default: qr.png]
 .TP
 \fB\-t\fR, \fB\-\-terminal\fR
-Output to terminal
+Output to terminal (never the logo)
 .TP
 \fB\-l\fR, \fB\-\-level\fR=\fIERROR_CORRECTION_LEVEL\fR [default: M]
 QR error correction level (L: 7%, M: 15%, Q: 25%, H: 30%)
+.TP
+\fB\-p\fR, \fB\-\-path\fR=\fILOGO_PATH\fR
+Path to logo (png/jpg)
 .TP
 \fB\-e\fR, \fB\-\-edge\fR=\fIBORDER\fR [default: 2]
 Edge size (in unit blocks)
@@ -27,8 +30,8 @@ Foreground RGB color (hex code)
 \fB\-b\fR, \fB\-\-bg\fR=\fIBG\fR [default: fff]
 Background RGB color (hex code)
 .TP
-\fB\-s\fR, \fB\-\-scale\fR=\fISCALE\fR [default: 16]
-Scale factor (1..255)
+\fB\-s\fR, \fB\-\-scale\fR=\fISCALE\fR [default: 8]
+Size of unit block in pixels (1..255)
 .TP
 \fB\-h\fR, \fB\-\-help\fR
 Print help
@@ -39,4 +42,4 @@ Print version
 [\fISTRING\fR]
 String to encode (can also be piped in)
 .SH VERSION
-v1.4.3
+v1.5.0
