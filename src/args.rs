@@ -1,4 +1,4 @@
-// eqr - Encode text into svg/png/jpg/terminal-format QR codes
+// eqr - Encode text into svg/png/jpg/terminal-format QR codes with optional logo
 
 pub use clap::Parser;
 use lazy_static::lazy_static;

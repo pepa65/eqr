@@ -1,4 +1,4 @@
-// eqr - Encode text into svg/png/jpg/terminal-format QR codes
+// eqr - Encode text into svg/png/jpg/terminal-format QR codes with optional logo
 
 mod args;
 mod error;
@@ -7,7 +7,7 @@ mod utils;
 use args::{Args, Parser};
 use dialoguer::{theme::ColorfulTheme, Confirm};
 use error::{Error, ErrorKind};
-use image::{ImageBuffer, ImageReader, RgbImage};
+use image::{DynamicImage, ImageBuffer, ImageReader, RgbaImage};
 use qrcodegen::QrCode;
 use std::{
 	fmt::Write as _,
@@ -16,7 +16,7 @@ use std::{
 	path::Path,
 	process,
 };
-use utils::hex_to_rgb;
+use utils::hex_to_rgba;
 
 /// QR code:
 /// - data: QrCode instance containing QR code data information
@@ -88,13 +88,13 @@ impl QrOutput for Qr {
 	/// Create raster image (png|jpg) file of the QR code
 	fn rst(&self, output: &Path, scale: i32, bg: &str, fg: &str, logo: image::DynamicImage) -> Result<(), ErrorKind> {
 		// Convert colors to RGB values
-		let fg = hex_to_rgb(fg);
-		let bg = hex_to_rgb(bg);
+		let fg = hex_to_rgba(fg);
+		let bg = hex_to_rgba(bg);
 		let scaled_border = scale * self.border;
 		// Size of the image including the borders
 		let img_size = self.data.size() * scale + (2 * scaled_border);
 		// Create square image: image needs border on each side of the square
-		let mut img: RgbImage = ImageBuffer::new(img_size as u32, img_size as u32);
+		let mut img: RgbaImage = ImageBuffer::new(img_size as u32, img_size as u32);
 		// Write image pixels
 		for y in 0..img_size {
 			for x in 0..img_size {
@@ -111,8 +111,8 @@ impl QrOutput for Qr {
 		}
 		let w = img_size / 4;
 		let m = img_size / 2 - w / 2;
-		let logosmall = logo.resize(w as u32, w as u32, image::imageops::FilterType::Nearest).to_rgb8();
-		image::imageops::overlay(&mut img, &logosmall, m.into(), m.into());
+		let logosmall = logo.resize(w as u32, w as u32, image::imageops::FilterType::Nearest).to_rgba8();
+		image::imageops::overlay(&mut img, &DynamicImage::ImageRgba8(logosmall), m.into(), m.into());
 		// Save image
 		if let Err(err) = img.save(output) {
 			return Err(ErrorKind::Error(Error::RasterOutputErr(err.to_string())));
@@ -153,10 +153,13 @@ fn run(args: Args) -> Result<(), ErrorKind> {
 		Err(err) => return Err(ErrorKind::Error(Error::QrCodeErr(err.to_string()))),
 	};
 
-	// Prep logo if specified
-	let logo = match &args.logo_path {
-		Some(p) => std::fs::read(p).unwrap_or([].to_vec()),
-		None => [].to_vec(),
+	// Prep logo
+	let pix = include_bytes!("../1x1.png").to_vec();
+	let logo = if args.logo_path.is_none() {
+		//		std::fs::read("1x1.png").unwrap()
+		pix
+	} else {
+		std::fs::read(args.logo_path.unwrap()).unwrap()
 	};
 	let logo = ImageReader::new(Cursor::new(logo))
 		.with_guessed_format()

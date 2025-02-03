@@ -1,6 +1,6 @@
 [package]
 name = "eqr"
-version = "1.5.1"
+version = "1.5.2"
 edition = "2021"
 rust-version = "1.70"
 authors = ["github.com/pepa65 <pepa65@passchier.net>", "Marco Radocchia <marco.radocchia@outlook.com>"]
