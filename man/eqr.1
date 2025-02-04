@@ -1,10 +1,10 @@
 .ie \n(.g .ds Aq \(aq
 .el .ds Aq '
-.TH eqr 1  "eqr 1.5.2" 
+.TH eqr 1  "eqr 1.6.0" 
 .SH NAME
 eqr \- Encode text into svg/png/jpg/terminal\-format QR codes with optional logo
 .SH SYNOPSIS
-\fBqr\fR [\fB\-o\fR|\fB\-\-output\fR] [\fB\-t\fR|\fB\-\-terminal\fR] [\fB\-l\fR|\fB\-\-level\fR] [\fB\-p\fR|\fB\-\-path\fR] [\fB\-e\fR|\fB\-\-edge\fR] [\fB\-f\fR|\fB\-\-fg\fR] [\fB\-b\fR|\fB\-\-bg\fR] [\fB\-s\fR|\fB\-\-scale\fR] [\fB\-h\fR|\fB\-\-help\fR] [\fB\-V\fR|\fB\-\-version\fR] [\fISTRING\fR] 
+\fBqr\fR [\fB\-o\fR|\fB\-\-output\fR] [\fB\-t\fR|\fB\-\-terminal\fR] [\fB\-l\fR|\fB\-\-level\fR] [\fB\-p\fR|\fB\-\-path\fR] [\fB\-P\fR|\fB\-\-proportion\fR] [\fB\-e\fR|\fB\-\-edge\fR] [\fB\-f\fR|\fB\-\-fg\fR] [\fB\-b\fR|\fB\-\-bg\fR] [\fB\-s\fR|\fB\-\-scale\fR] [\fB\-h\fR|\fB\-\-help\fR] [\fB\-V\fR|\fB\-\-version\fR] [\fISTRING\fR] 
 .SH DESCRIPTION
 Encode text into svg/png/jpg/terminal\-format QR codes with optional logo
 .SH OPTIONS
@@ -20,6 +20,9 @@ QR error correction level (L: 7%, M: 15%, Q: 25%, H: 30%)
 .TP
 \fB\-p\fR, \fB\-\-path\fR=\fILOGO_PATH\fR
 Path to logo (png/jpg)
+.TP
+\fB\-P\fR, \fB\-\-proportion\fR=\fIPROPORTION\fR [default: 0.25]
+Logo proportion to the whole image (0..1)
 .TP
 \fB\-e\fR, \fB\-\-edge\fR=\fIBORDER\fR [default: 2]
 Edge size (in unit blocks)
@@ -42,4 +45,4 @@ Print version
 [\fISTRING\fR]
 String to encode (can also be piped in)
 .SH VERSION
-v1.5.2
+v1.6.0

@@ -27,6 +27,8 @@ Register-ArgumentCompleter -Native -CommandName 'eqr' -ScriptBlock {
             [CompletionResult]::new('--level', '--level', [CompletionResultType]::ParameterName, 'QR error correction level (L: 7%, M: 15%, Q: 25%, H: 30%)')
             [CompletionResult]::new('-p', '-p', [CompletionResultType]::ParameterName, 'Path to logo (png/jpg)')
             [CompletionResult]::new('--path', '--path', [CompletionResultType]::ParameterName, 'Path to logo (png/jpg)')
+            [CompletionResult]::new('-P', '-P ', [CompletionResultType]::ParameterName, 'Logo proportion to the whole image (0..1)')
+            [CompletionResult]::new('--proportion', '--proportion', [CompletionResultType]::ParameterName, 'Logo proportion to the whole image (0..1)')
             [CompletionResult]::new('-e', '-e', [CompletionResultType]::ParameterName, 'Edge size (in unit blocks)')
             [CompletionResult]::new('--edge', '--edge', [CompletionResultType]::ParameterName, 'Edge size (in unit blocks)')
             [CompletionResult]::new('-f', '-f', [CompletionResultType]::ParameterName, 'Foreground RGB color (hex code)')

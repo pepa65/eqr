@@ -24,6 +24,8 @@ set edit:completion:arg-completer[eqr] = {|@words|
             cand --level 'QR error correction level (L: 7%, M: 15%, Q: 25%, H: 30%)'
             cand -p 'Path to logo (png/jpg)'
             cand --path 'Path to logo (png/jpg)'
+            cand -P 'Logo proportion to the whole image (0..1)'
+            cand --proportion 'Logo proportion to the whole image (0..1)'
             cand -e 'Edge size (in unit blocks)'
             cand --edge 'Edge size (in unit blocks)'
             cand -f 'Foreground RGB color (hex code)'

@@ -59,6 +59,10 @@ pub struct Args {
 	#[clap(short = 'p', long = "path")]
 	pub logo_path: Option<std::path::PathBuf>,
 
+	/// Logo proportion to the whole image (0..1)
+	#[clap(short = 'P', long = "proportion", default_value_t = 0.25, value_parser)]
+	pub proportion: f64,
+
 	/// Edge size (in unit blocks)
 	#[clap(short = 'e', long = "edge", default_value_t = 2, value_parser)]
 	pub border: u8,

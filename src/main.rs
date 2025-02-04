@@ -38,7 +38,7 @@ trait QrOutput {
 	fn svg(&self, output: &Path, scale: i32, bg: &str, fg: &str) -> Result<(), ErrorKind>;
 
 	/// Create raster image (png|jpg) file of the QR code
-	fn rst(&self, output: &Path, scale: i32, bg: &str, fg: &str, logo: image::DynamicImage) -> Result<(), ErrorKind>;
+	fn rst(&self, output: &Path, scale: i32, bg: &str, fg: &str, logo: image::DynamicImage, proportion: f64) -> Result<(), ErrorKind>;
 
 	/// Output QR to terminal
 	fn terminal(&self);
@@ -86,7 +86,7 @@ impl QrOutput for Qr {
 	}
 
 	/// Create raster image (png|jpg) file of the QR code
-	fn rst(&self, output: &Path, scale: i32, bg: &str, fg: &str, logo: image::DynamicImage) -> Result<(), ErrorKind> {
+	fn rst(&self, output: &Path, scale: i32, bg: &str, fg: &str, logo: image::DynamicImage, proportion: f64) -> Result<(), ErrorKind> {
 		// Convert colors to RGB values
 		let fg = hex_to_rgba(fg);
 		let bg = hex_to_rgba(bg);
@@ -109,7 +109,7 @@ impl QrOutput for Qr {
 				pixel.0 = if self.data.get_module(x, y) { fg } else { bg };
 			}
 		}
-		let w = img_size / 4;
+		let w = (img_size as f64 * proportion) as i32;
 		let m = img_size / 2 - w / 2;
 		let logosmall = logo.resize(w as u32, w as u32, image::imageops::FilterType::Nearest).to_rgba8();
 		image::imageops::overlay(&mut img, &DynamicImage::ImageRgba8(logosmall), m.into(), m.into());
@@ -188,7 +188,7 @@ fn run(args: Args) -> Result<(), ErrorKind> {
 		// Determine output file type based on file extension
 		match &output.extension().map(|ext| ext.to_str().unwrap()) {
 			Some("svg") => qr.svg(output, i32::from(args.scale), &args.bg, &args.fg)?,
-			Some("png" | "jpg") => qr.rst(output, i32::from(args.scale), &args.bg, &args.fg, logo)?,
+			Some("png" | "jpg") => qr.rst(output, i32::from(args.scale), &args.bg, &args.fg, logo, args.proportion)?,
 			_ => return Err(ErrorKind::Error(Error::InvalidOutputExt)),
 		};
 	};

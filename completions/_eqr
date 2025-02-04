@@ -21,6 +21,8 @@ _eqr() {
 '--level=[QR error correction level (L\: 7%, M\: 15%, Q\: 25%, H\: 30%)]:ERROR_CORRECTION_LEVEL:_default' \
 '-p+[Path to logo (png/jpg)]:LOGO_PATH:_files' \
 '--path=[Path to logo (png/jpg)]:LOGO_PATH:_files' \
+'-P+[Logo proportion to the whole image (0..1)]:PROPORTION:_default' \
+'--proportion=[Logo proportion to the whole image (0..1)]:PROPORTION:_default' \
 '-e+[Edge size (in unit blocks)]:BORDER:_default' \
 '--edge=[Edge size (in unit blocks)]:BORDER:_default' \
 '(-t --terminal)-f+[Foreground RGB color (hex code)]:FG:_default' \
