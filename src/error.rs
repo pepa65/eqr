@@ -9,6 +9,8 @@ use termcolor::{BufferWriter, Color, ColorChoice, ColorSpec, WriteColor};
 pub enum Error {
 	/// Occurs when unable to generate QR code.
 	QrCodeErr(String),
+	/// Occurs when no file is found at the path for the logo.
+	BadPath(),
 	/// Occurs when user choses unsupported output file extension.
 	InvalidOutputExt,
 	/// Occurs when unable to generate SVG output file.
@@ -54,6 +56,7 @@ impl Display for ErrorKind {
 		match self {
 			Self::Error(error) => match error {
 				Error::QrCodeErr(msg) => write!(f, "unable to generate QR code: {msg}"),
+				Error::BadPath() => write!(f, "no logo found at given path"),
 				Error::InvalidOutputExt => write!(f, "invalid output file extension"),
 				Error::SvgOutputErr(msg) => write!(f, "unable to write SVG output file: {msg}"),
 				Error::RasterOutputErr(msg) => write!(f, "unable to write raster image file: {msg}"),

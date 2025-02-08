@@ -56,7 +56,7 @@ pub struct Args {
 	pub error_correction_level: QrCodeEcc,
 
 	/// Path to logo (png/jpg)
-	#[clap(short = 'p', long = "path")]
+	#[clap(short = 'p', long = "path", default_missing_value = "qr.png", required = false)]
 	pub logo_path: Option<std::path::PathBuf>,
 
 	/// Logo proportion to the whole image (0..1)

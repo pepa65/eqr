@@ -156,10 +156,12 @@ fn run(args: Args) -> Result<(), ErrorKind> {
 	// Prep logo
 	let pix = include_bytes!("../1x1.png").to_vec();
 	let logo = if args.logo_path.is_none() {
-		//		std::fs::read("1x1.png").unwrap()
 		pix
 	} else {
-		std::fs::read(args.logo_path.unwrap()).unwrap()
+		match std::fs::read(args.logo_path.unwrap()) {
+			Ok(f) => f,
+			Err(_) => return Err(ErrorKind::Error(Error::BadPath())),
+    }
 	};
 	let logo = ImageReader::new(Cursor::new(logo))
 		.with_guessed_format()
