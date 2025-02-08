@@ -18,7 +18,7 @@ set edit:completion:arg-completer[eqr] = {|@words|
     }
     var completions = [
         &'eqr'= {
-            cand -q 'Output file (jpg/png/svg) [default: qr.png]'
+            cand -o 'Output file (jpg/png/svg) [default: qr.png]'
             cand --qr-path 'Output file (jpg/png/svg) [default: qr.png]'
             cand -l 'QR error correction level (L: 7%, M: 15%, Q: 25%, H: 30%)'
             cand --level 'QR error correction level (L: 7%, M: 15%, Q: 25%, H: 30%)'

@@ -15,7 +15,7 @@ _eqr() {
 
     local context curcontext="$curcontext" state line
     _arguments "${_arguments_options[@]}" : \
-'-q+[Output file (jpg/png/svg) \[default\: qr.png\]]:QR_PATH:_default' \
+'-o+[Output file (jpg/png/svg) \[default\: qr.png\]]:QR_PATH:_default' \
 '--qr-path=[Output file (jpg/png/svg) \[default\: qr.png\]]:QR_PATH:_default' \
 '-l+[QR error correction level (L\: 7%, M\: 15%, Q\: 25%, H\: 30%)]:LEVEL:_default' \
 '--level=[QR error correction level (L\: 7%, M\: 15%, Q\: 25%, H\: 30%)]:LEVEL:_default' \

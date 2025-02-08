@@ -39,7 +39,7 @@ pub fn parse_level(ecl: &str) -> Result<QrCodeEcc, String> {
 ))]
 pub struct Args {
 	/// Output file (jpg/png/svg) [default: qr.png]
-	#[clap(short, long, value_parser)]
+	#[clap(short = 'o', long = "output", long, value_parser)]
 	pub qr_path: Option<String>,
 
 	/// Output to terminal (never the logo)
