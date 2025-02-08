@@ -17,7 +17,7 @@ pub fn parse_hex_color(hex: &str) -> Result<String, String> {
 }
 
 /// Parse QR error correction level (ecl: L/low/M/medium/Q/quartile/H/high)
-pub fn parse_error_correction_level(ecl: &str) -> Result<QrCodeEcc, String> {
+pub fn parse_level(ecl: &str) -> Result<QrCodeEcc, String> {
 	Ok(match ecl {
 		"L" | "low" => QrCodeEcc::Low,
 		"M" | "medium" => QrCodeEcc::Medium,
@@ -40,7 +40,7 @@ pub fn parse_error_correction_level(ecl: &str) -> Result<QrCodeEcc, String> {
 pub struct Args {
 	/// Output file (jpg/png/svg) [default: qr.png]
 	#[clap(short, long, value_parser)]
-	pub output: Option<String>,
+	pub qr_path: Option<String>,
 
 	/// Output to terminal (never the logo)
 	#[clap(short, long)]
@@ -51,9 +51,9 @@ pub struct Args {
 		short = 'l',
 		long = "level",
 		default_value = "M",
-		value_parser = parse_error_correction_level
+		value_parser = parse_level
 	)]
-	pub error_correction_level: QrCodeEcc,
+	pub level: QrCodeEcc,
 
 	/// Path to logo (png/jpg)
 	#[clap(short = 'p', long = "path", default_missing_value = "qr.png", required = false)]
@@ -65,7 +65,7 @@ pub struct Args {
 
 	/// Edge size (in unit blocks)
 	#[clap(short = 'e', long = "edge", default_value_t = 2, value_parser)]
-	pub border: u8,
+	pub edge: u8,
 
 	/// Foreground RGB color (hex code)
 	#[clap(
