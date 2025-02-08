@@ -69,7 +69,7 @@ Options:
   -t, --terminal                        Output to terminal (never the logo)
   -l, --level <ERROR_CORRECTION_LEVEL>  QR error correction level (L: 7%, M: 15%, Q: 25%, H: 30%) [default: M]
   -p, --path <LOGO_PATH>                Path to logo (png/jpg)
-  -p, --path <LOGO_PATH>                Path to logo (png/jpg)
+  -P, --proportion <PROPORTION>         Logo proportion to the whole image (0..1) [default: 0.25]
   -e, --edge <BORDER>                   Edge size (in unit blocks) [default: 2]
   -f, --fg <FG>                         Foreground RGB color (hex code) [default: 000]
   -b, --bg <BG>                         Background RGB color (hex code) [default: fff]
