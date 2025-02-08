@@ -1,4 +1,22 @@
 # Changelog
+## [1.6.2] - 2025-02-08
+- Fixed readme, modified help
+
+## [1.6.1] - 2025-02-08
+- Fixed bad path error
+
+## [1.6.0] - 2025-02-04
+- Proportion option for logo
+
+## [1.5.2] - 2025-02-04
+- Allow logo transparency
+
+## [1.5.1] - 2025-01-30
+- Double logo size
+
+## [1.5.0] - 2025-01-30
+- Allow logo overlay
+
 ## [1.4.3] - 2025-01-13
 - Set single dependency version
 
