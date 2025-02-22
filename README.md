@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/github/license/pepa65/eqr)](https://github.com/pepa65/eqr/blob/main/LICENSE)
 [![Downloads](https://img.shields.io/crates/d/eqr.svg)](https://crates.io/crates/eqr)
 
-# eqr 1.6.3
+# eqr 1.7.0
 **Encode text into svg/png/jpg/terminal-format QR codes with optional logo**
 
 * Error correction level can be set
@@ -12,14 +12,17 @@
 * Edge size can be set in units
 * Foreground and backgroundcolor can be set
 * A logo can be overlaid, with transparency
+* Main binary is `qr`, additional binary `promptpay` makes QR codes for
+  use with the Thai PromptPay payment system.
 
 ## Install
 ### Install standalone single-binary
 ```
-wget https://github.com/pepa65/eqr/releases/download/1.6.3/qr
-sudo mv qr /usr/local/bin
-sudo chown root:root /usr/local/bin/qr
-sudo chmod +x /usr/local/bin/qr
+wget https://github.com/pepa65/eqr/releases/download/1.7.0/qr
+wget https://github.com/pepa65/eqr/releases/download/1.7.0/promptpay
+sudo chown root:root qr promptpay
+sudo chmod +x qr promptpay
+sudo mv qr promptpay /usr/local/bin/
 ```
 
 ### Install with cargo
@@ -39,7 +42,7 @@ rustup target add x86_64-unknown-linux-musl
 cargo rel  # Alias in .cargo/config.toml
 ```
 
-The binary will be at `target/x86_64-unknown-linux-musl/release/qr`
+The binaries will be in `target/x86_64-unknown-linux-musl/release/`
 
 ### Install with cargo-binstall
 Even without a full Rust toolchain, rust binaries can be installed with the static binary `cargo-binstall`:
@@ -55,11 +58,11 @@ sudo mv cargo-binstall /usr/local/bin/
 
 Only a linux-x86_64 (musl) binary available: `cargo-binstall eqr`
 
-It will be installed in `~/.cargo/bin/` which still needs to be added to `PATH`!
+The binaries will be installed into `~/.cargo/bin/` which still needs to be added to `PATH`!
 
 ## Usage
 ```
-eqr 1.6.3 - Encode text into svg/png/jpg/terminal-format QR codes with optional logo
+qr 1.7.0 - Encode text into svg/png/jpg/terminal-format QR codes with optional logo
 Usage: qr [OPTIONS] [STRING]
 Arguments:
   [STRING]  String to encode (can also be piped in)
@@ -76,6 +79,20 @@ Options:
   -s, --scale <SCALE>            Size of unit block in pixels (1..255) [default: 8]
   -h, --help                     Print help
   -V, --version                  Print version
+```
+
+```
+promptpay 1.7.0 - Make Thai PromptPay QR code
+Usage: promptpay [OPTIONS] <PHONE>
+Arguments:
+  <PHONE>  Thai phone number (10 digits starting with 0)
+
+Options:
+  -o, --output <QR_PATH>  Output file (png) [default: PrompPayPHONE[_AMOUNT].png]
+  -p, --path <LOGO_PATH>  Path to logo (png/jpg) [default: PromptPay logo]
+  -a, --amount <AMOUNT>   Amount in Thai baht (no decimals/point or 2 decimals)
+  -h, --help              Print help
+  -V, --version           Print version
 ```
 
 ## Changelog

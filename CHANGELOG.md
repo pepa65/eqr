@@ -1,4 +1,7 @@
 # Changelog
+## [1.7.0] - 2025-02-22
+- Refactor and add promptpay
+
 ## [1.6.2] - 2025-02-08
 - Fixed readme, modified help
 

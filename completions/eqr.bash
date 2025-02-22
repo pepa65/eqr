@@ -19,13 +19,13 @@ _eqr() {
 
     case "${cmd}" in
         eqr)
-            opts="-o -t -l -p -P -e -f -b -s -h -V --qr-path --terminal --level --path --proportion --edge --fg --bg --scale --help --version [STRING]"
+            opts="-o -t -l -p -P -e -f -b -s -h -V --output --terminal --level --path --proportion --edge --fg --bg --scale --help --version [STRING]"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 1 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
             fi
             case "${prev}" in
-                --qr-path)
+                --output)
                     COMPREPLY=($(compgen -f "${cur}"))
                     return 0
                     ;;

@@ -1,4 +1,4 @@
-complete -c eqr -s o -l qr-path -d 'Output file (jpg/png/svg) [default: qr.png]' -r
+complete -c eqr -s o -l output -d 'Output file (jpg/png/svg) [default: qr.png]' -r
 complete -c eqr -s l -l level -d 'QR error correction level (L: 7%, M: 15%, Q: 25%, H: 30%)' -r
 complete -c eqr -s p -l path -d 'Path to logo (png/jpg)' -r -F
 complete -c eqr -s P -l proportion -d 'Logo proportion to the whole image (0..1)' -r

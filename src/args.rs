@@ -32,14 +32,14 @@ pub fn parse_level(ecl: &str) -> Result<QrCodeEcc, String> {
 #[clap(version, about)]
 #[clap(help_template(
 	"\
-{before-help}{name} {version} - {about}
+{before-help}qr {version} - {about}
 {usage-heading} {usage}
 {all-args}{after-help}
 "
 ))]
 pub struct Args {
 	/// Output file (jpg/png/svg) [default: qr.png]
-	#[clap(short = 'o', long = "output", long, value_parser)]
+	#[clap(short = 'o', long = "output", default_missing_value = "qr.png", value_parser)]
 	pub qr_path: Option<String>,
 
 	/// Output to terminal (never the logo)
@@ -56,7 +56,7 @@ pub struct Args {
 	pub level: QrCodeEcc,
 
 	/// Path to logo (png/jpg)
-	#[clap(short = 'p', long = "path", default_missing_value = "qr.png", required = false)]
+	#[clap(short = 'p', long = "path", required = false)]
 	pub logo_path: Option<std::path::PathBuf>,
 
 	/// Logo proportion to the whole image (0..1)

@@ -22,7 +22,7 @@ Register-ArgumentCompleter -Native -CommandName 'eqr' -ScriptBlock {
     $completions = @(switch ($command) {
         'eqr' {
             [CompletionResult]::new('-o', '-o', [CompletionResultType]::ParameterName, 'Output file (jpg/png/svg) [default: qr.png]')
-            [CompletionResult]::new('--qr-path', '--qr-path', [CompletionResultType]::ParameterName, 'Output file (jpg/png/svg) [default: qr.png]')
+            [CompletionResult]::new('--output', '--output', [CompletionResultType]::ParameterName, 'Output file (jpg/png/svg) [default: qr.png]')
             [CompletionResult]::new('-l', '-l', [CompletionResultType]::ParameterName, 'QR error correction level (L: 7%, M: 15%, Q: 25%, H: 30%)')
             [CompletionResult]::new('--level', '--level', [CompletionResultType]::ParameterName, 'QR error correction level (L: 7%, M: 15%, Q: 25%, H: 30%)')
             [CompletionResult]::new('-p', '-p', [CompletionResultType]::ParameterName, 'Path to logo (png/jpg)')
