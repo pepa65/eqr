@@ -29,4 +29,6 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: eqr
-        path: /home/runner/work/eqr/eqr/target/x86_64-unknown-linux-musl/release/qr
+        path: |
+          /home/runner/work/eqr/eqr/target/x86_64-unknown-linux-musl/release/qr
+          /home/runner/work/eqr/eqr/target/x86_64-unknown-linux-musl/release/promptpay

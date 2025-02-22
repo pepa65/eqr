@@ -1,6 +1,6 @@
 [package]
 name = "eqr"
-version = "1.7.0"
+version = "1.7.1"
 edition = "2021"
 rust-version = "1.70"
 authors = ["github.com/pepa65 <pepa65@passchier.net>", "Marco Radocchia <marco.radocchia@outlook.com>"]
@@ -36,7 +36,7 @@ regex = "1.11.1"
 lazy_static = "1.5.0"
 image = "0.25.5"
 atty = "0.2.14"
-tempfile = "3.17.1"
+tempfile = "3.17.0"
 
 [build-dependencies]
 clap = { version = "4.5.26", features = ["derive"] }

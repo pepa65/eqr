@@ -1,4 +1,7 @@
 # Changelog
+## [1.7.1] - 2025-02-22
+- Update CI and tempfile version
+
 ## [1.7.0] - 2025-02-22
 - Refactor and add promptpay
 
