@@ -1,3 +1,5 @@
+// promptpay - Make Thai PromptPay QR code
+
 mod args;
 mod error;
 mod run;

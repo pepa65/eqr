@@ -21,8 +21,7 @@ name = "promptpay"
 path = "src/promptpay.rs"
 
 [package.metadata.binstall]
-pkg-url = "{repo}/releases/download/{version}/qr"
-pkg-fmt = "bin"
+pkg-url = "{repo}/releases/download/{version}/eqr.tgz"
 disabled-strategies = ["quick-install", "compile"]
 target-family = "Linux"
 target-arch = "X86_64"
