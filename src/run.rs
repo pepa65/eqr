@@ -162,7 +162,7 @@ pub fn run(args: Args) -> Result<(), ErrorKind> {
 		.with_guessed_format()
 		.map_err(|e| {
 			eprintln!("ERROR: unknown image format: {e}");
-			std::process::exit(1);	
+			std::process::exit(1);
 		})?
 		.decode()
 		.unwrap();
