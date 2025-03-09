@@ -58,5 +58,6 @@ jobs:
       - uses: taiki-e/install-action@cargo-hack
       - uses: taiki-e/install-action@cargo-minimal-versions
       - uses: Swatinem/rust-cache@v2
+      - run: rustup target add x86_64-unknown-linux-musl
       - run: cargo minimal-versions check --target x86_64-unknown-linux-musl
       - run: cargo minimal-versions check --features full --target x86_64-unknown-linux-musl
