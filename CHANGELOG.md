@@ -1,4 +1,10 @@
 # Changelog
+## [1.7.3] - 2025-03-09
+- Fmt and update deps
+
+## [1.7.2] - 2025-02-22
+- Update cargo-binstall link
+
 ## [1.7.1] - 2025-02-22
 - Update CI and tempfile version
 
