@@ -27,6 +27,8 @@ pub fn parse_level(ecl: &str) -> Result<QrCodeEcc, String> {
 	})
 }
 
+const DEF_EDGE: u8 = 4;
+
 /// Encode text into svg/png/jpg/terminal-format QR codes
 #[derive(Parser, Debug)]
 #[clap(version, about)]
@@ -64,7 +66,7 @@ pub struct Args {
 	pub proportion: f64,
 
 	/// Edge size (in unit blocks)
-	#[clap(short = 'e', long = "edge", default_value_t = 2, value_parser)]
+	#[clap(short = 'e', long = "edge", default_value_t = DEF_EDGE, value_parser)]
 	pub edge: u8,
 
 	/// Foreground RGB color (hex code)

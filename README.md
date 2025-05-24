@@ -73,7 +73,7 @@ Options:
   -l, --level <LEVEL>            QR error correction level (L: 7%, M: 15%, Q: 25%, H: 30%) [default: M]
   -p, --path <LOGO_PATH>         Path to logo (png/jpg)
   -P, --proportion <PROPORTION>  Logo proportion to the whole image (0..1) [default: 0.25]
-  -e, --edge <EDGE>              Edge size (in unit blocks) [default: 2]
+  -e, --edge <EDGE>              Edge size (in unit blocks) [default: 4]
   -f, --fg <FG>                  Foreground RGB color (hex code) [default: 000]
   -b, --bg <BG>                  Background RGB color (hex code) [default: fff]
   -s, --scale <SCALE>            Size of unit block in pixels (1..255) [default: 8]

@@ -1,8 +1,7 @@
 [package]
 name = "eqr"
-version = "1.7.5"
+version = "1.8.0"
 edition = "2024"
-#rust-version = "1.70"
 authors = ["github.com/pepa65 <pepa65@passchier.net>", "Marco Radocchia <marco.radocchia@outlook.com>"]
 description = "Encode text into svg/png/jpg/terminal-format QR codes with optional logo"
 repository = "https://github.com/pepa65/eqr"
