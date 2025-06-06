@@ -1,9 +1,8 @@
 // eqr - Encode text into svg/png/jpg/terminal-format QR codes with optional logo
 
-use std::{
-	fmt::{self, Display, Formatter},
-	io::{self, Write},
-};
+use std::fmt::{Display, Formatter};
+use std::io::{IsTerminal, Write};
+use std::{fmt, io};
 use termcolor::{BufferWriter, Color, ColorChoice, ColorSpec, WriteColor};
 
 pub enum Error {
@@ -30,7 +29,8 @@ pub enum ErrorKind {
 impl ErrorKind {
 	/// Colorize warning|error output.
 	pub fn colorize(&self) -> io::Result<()> {
-		let color_choice = match atty::is(atty::Stream::Stderr) {
+		//let color_choice = match atty::is(atty::Stream::Stderr) {
+		let color_choice = match io::stderr().is_terminal() {
 			true => ColorChoice::Auto,
 			false => ColorChoice::Never,
 		};

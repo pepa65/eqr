@@ -124,11 +124,7 @@ fn main() {
 		format!("-p {} ", path.display())
 	} else {
 		let logo_path = args.logo_path.unwrap();
-		if logo_path.is_empty() {
-			"".to_string()
-		} else {
-			format!("-p {} ", logo_path)
-		}
+		if logo_path.is_empty() { "".to_string() } else { format!("-p {} ", logo_path) }
 	};
 
 	let mut str = format!("00020101021129370016A00000067701011101130066{phone}53037645802TH6304");

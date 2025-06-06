@@ -3,15 +3,13 @@
 use crate::args::Args;
 use crate::error::{Error, ErrorKind};
 use crate::utils::hex_to_rgba;
-use dialoguer::{theme::ColorfulTheme, Confirm};
+use dialoguer::{Confirm, theme::ColorfulTheme};
 use image::{DynamicImage, ImageBuffer, ImageReader, RgbaImage};
 use qrcodegen::QrCode;
-use std::{
-	fmt::Write as _,
-	fs,
-	io::{self, Cursor, Read, Write},
-	path::Path,
-};
+use std::fmt::Write as _;
+use std::io::{Cursor, IsTerminal, Read, Write};
+use std::path::Path;
+use std::{fs, io};
 
 /// QR:
 /// - data: QrCode instance containing QR code data information
@@ -132,7 +130,8 @@ pub fn run(args: Args) -> Result<(), ErrorKind> {
 	// If string to encode is not passed in as CLI argument, check stdin for piped string
 	let mut string = args.string.unwrap_or("".to_string());
 	if string.is_empty() {
-		if atty::is(atty::Stream::Stdin) {
+		//if atty::is(atty::Stream::Stdin) {
+		if io::stdin().is_terminal() {
 			return Err(ErrorKind::Error(Error::NoStringGiven()));
 		};
 		io::stdin().lock().read_to_string(&mut string).unwrap();
