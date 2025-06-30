@@ -34,9 +34,9 @@ const DEF_EDGE: u8 = 4;
 #[clap(version, about)]
 #[clap(help_template(
 	"\
-{before-help}qr {version} - {about}
+{name} {version} - {about}
 {usage-heading} {usage}
-{all-args}{after-help}
+{all-args}
 "
 ))]
 pub struct Args {
