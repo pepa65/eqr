@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/github/license/pepa65/eqr)](https://github.com/pepa65/eqr/blob/main/LICENSE)
 [![Downloads](https://img.shields.io/crates/d/eqr.svg)](https://crates.io/crates/eqr)
 
-# eqr 1.8.13
+# eqr 1.8.14
 **Encode text into svg/png/jpg/terminal-format QR codes with optional logo**
 
 * Error correction level can be set
@@ -18,8 +18,8 @@
 ## Install
 ### Install standalone single-binary
 ```
-wget https://github.com/pepa65/eqr/releases/download/1.8.13/qr
-wget https://github.com/pepa65/eqr/releases/download/1.8.13/promptpay
+wget https://github.com/pepa65/eqr/releases/download/1.8.14/qr
+wget https://github.com/pepa65/eqr/releases/download/1.8.14/promptpay
 sudo chown root:root qr promptpay
 sudo chmod +x qr promptpay
 sudo mv qr promptpay /usr/local/bin/
@@ -62,7 +62,7 @@ The binaries will be installed into `~/.cargo/bin/` which still needs to be adde
 
 ## Usage
 ```
-qr 1.8.13 - Encode text into svg/png/jpg/terminal-format QR codes with optional logo
+qr 1.8.14 - Encode text into svg/png/jpg/terminal-format QR codes with optional logo
 Usage: qr [OPTIONS] [STRING]
 Arguments:
   [STRING]  String to encode (can also be piped in)
@@ -82,7 +82,7 @@ Options:
 ```
 
 ```
-promptpay 1.8.13 - Make Thai PromptPay QR code
+promptpay 1.8.14 - Make Thai PromptPay QR code
 Usage: promptpay [OPTIONS] <PHONE>
 Arguments:
   <PHONE>  Thai phone number (10 digits starting with 0)
