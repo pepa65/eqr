@@ -1,6 +1,6 @@
 .ie \n(.g .ds Aq \(aq
 .el .ds Aq '
-.TH eqr 1  "eqr 1.8.15" 
+.TH eqr 1  "eqr 1.8.16" 
 .SH NAME
 eqr \- Encode text into svg/png/jpg/terminal\-format QR codes with optional logo
 .SH SYNOPSIS
@@ -9,31 +9,31 @@ eqr \- Encode text into svg/png/jpg/terminal\-format QR codes with optional logo
 Encode text into svg/png/jpg/terminal\-format QR codes with optional logo
 .SH OPTIONS
 .TP
-\fB\-o\fR, \fB\-\-output\fR=\fIQR_PATH\fR
+\fB\-o\fR, \fB\-\-output\fR \fI<QR_PATH>\fR
 Output file (jpg/png/svg) [default: qr.png]
 .TP
 \fB\-t\fR, \fB\-\-terminal\fR
 Output to terminal (never the logo)
 .TP
-\fB\-l\fR, \fB\-\-level\fR=\fILEVEL\fR [default: M]
+\fB\-l\fR, \fB\-\-level\fR \fI<LEVEL>\fR [default: M]
 QR error correction level (L: 7%, M: 15%, Q: 25%, H: 30%)
 .TP
-\fB\-p\fR, \fB\-\-path\fR=\fILOGO_PATH\fR
+\fB\-p\fR, \fB\-\-path\fR \fI<LOGO_PATH>\fR
 Path to logo (png/jpg)
 .TP
-\fB\-P\fR, \fB\-\-proportion\fR=\fIPROPORTION\fR [default: 0.25]
+\fB\-P\fR, \fB\-\-proportion\fR \fI<PROPORTION>\fR [default: 0.25]
 Logo proportion to the whole image (0..1)
 .TP
-\fB\-e\fR, \fB\-\-edge\fR=\fIEDGE\fR [default: 4]
+\fB\-e\fR, \fB\-\-edge\fR \fI<EDGE>\fR [default: 4]
 Edge size (in unit blocks)
 .TP
-\fB\-f\fR, \fB\-\-fg\fR=\fIFG\fR [default: 000]
+\fB\-f\fR, \fB\-\-fg\fR \fI<FG>\fR [default: 000]
 Foreground RGB color (hex code)
 .TP
-\fB\-b\fR, \fB\-\-bg\fR=\fIBG\fR [default: fff]
+\fB\-b\fR, \fB\-\-bg\fR \fI<BG>\fR [default: fff]
 Background RGB color (hex code)
 .TP
-\fB\-s\fR, \fB\-\-scale\fR=\fISCALE\fR [default: 8]
+\fB\-s\fR, \fB\-\-scale\fR \fI<SCALE>\fR [default: 8]
 Size of unit block in pixels (1..255)
 .TP
 \fB\-h\fR, \fB\-\-help\fR
@@ -45,4 +45,4 @@ Print version
 [\fISTRING\fR]
 String to encode (can also be piped in)
 .SH VERSION
-v1.8.15
+v1.8.16
