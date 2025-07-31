@@ -1,10 +1,11 @@
-[![Cargo build](https://github.com/pepa65/eqr/actions/workflows/rust.yml/badge.svg)](https://github.com/pepa65/eqr/actions/workflows/rust.yml)
-[![Dependencies](https://deps.rs/repo/github/pepa65/eqr/status.svg)](https://deps.rs/repo/github/pepa65/eqr)
-[![Docs](https://img.shields.io/badge/Docs-eqr-blue)](https://docs.rs/crate/eqr/latest)
-[![License](https://img.shields.io/github/license/pepa65/eqr)](https://github.com/pepa65/eqr/blob/main/LICENSE)
-[![Downloads](https://img.shields.io/crates/d/eqr.svg)](https://crates.io/crates/eqr)
+[![version](https://img.shields.io/crates/v/eqr.svg)](https://crates.io/crates/eqr)
+[![build](https://github.com/pepa65/eqr/actions/workflows/rust.yml/badge.svg)](https://github.com/pepa65/eqr/actions/workflows/rust.yml)
+[![dependencies](https://deps.rs/repo/github/pepa65/eqr/status.svg)](https://deps.rs/repo/github/pepa65/eqr)
+[![docs](https://img.shields.io/badge/docs-eqr-blue.svg)](https://docs.rs/crate/eqr/latest)
+[![license](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/pepa65/eqr/blob/main/LICENSE)
+[![downloads](https://img.shields.io/crates/d/eqr.svg)](https://crates.io/crates/eqr)
 
-# eqr 1.8.16
+# eqr 1.8.17
 **Encode text into svg/png/jpg/terminal-format QR codes with optional logo**
 
 * Error correction level can be set
@@ -18,8 +19,8 @@
 ## Install
 ### Install standalone single-binary
 ```
-wget https://github.com/pepa65/eqr/releases/download/1.8.16/qr
-wget https://github.com/pepa65/eqr/releases/download/1.8.16/promptpay
+wget https://github.com/pepa65/eqr/releases/download/1.8.17/qr
+wget https://github.com/pepa65/eqr/releases/download/1.8.17/promptpay
 sudo chown root:root qr promptpay
 sudo chmod +x qr promptpay
 sudo mv qr promptpay /usr/local/bin/
@@ -62,7 +63,7 @@ The binaries will be installed into `~/.cargo/bin/` which still needs to be adde
 
 ## Usage
 ```
-qr 1.8.16 - Encode text into svg/png/jpg/terminal-format QR codes with optional logo
+qr 1.8.17 - Encode text into svg/png/jpg/terminal-format QR codes with optional logo
 Usage: qr [OPTIONS] [STRING]
 Arguments:
   [STRING]  String to encode (can also be piped in)
@@ -82,7 +83,7 @@ Options:
 ```
 
 ```
-promptpay 1.8.16 - Make Thai PromptPay QR code
+promptpay 1.8.17 - Make Thai PromptPay QR code
 Usage: promptpay [OPTIONS] <PHONE>
 Arguments:
   <PHONE>  Thai phone number (10 digits starting with 0)

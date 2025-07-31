@@ -1,4 +1,4 @@
-name: Cargo build
+name: build
 
 on:
   push:
