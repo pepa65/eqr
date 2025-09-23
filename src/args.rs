@@ -44,6 +44,10 @@ pub struct Args {
 	#[clap(short = 'o', long = "output", default_missing_value = "qr.png", value_parser)]
 	pub qr_path: Option<String>,
 
+	/// Force the overwrite of an existing output file.
+	#[clap(short = 'F', long, requires = "output")]
+	pub force: bool,
+
 	/// Output to terminal (never the logo)
 	#[clap(short, long)]
 	pub terminal: bool,

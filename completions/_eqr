@@ -31,6 +31,8 @@ _eqr() {
 '(-t --terminal)--bg=[Background RGB color (hex code)]:BG:_default' \
 '(-t --terminal)-s+[Size of unit block in pixels (1..255)]:SCALE:_default' \
 '(-t --terminal)--scale=[Size of unit block in pixels (1..255)]:SCALE:_default' \
+'-F[Force the overwrite of an existing output file]' \
+'--force[Force the overwrite of an existing output file]' \
 '-t[Output to terminal (never the logo)]' \
 '--terminal[Output to terminal (never the logo)]' \
 '-h[Print help]' \

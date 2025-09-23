@@ -37,6 +37,8 @@ Register-ArgumentCompleter -Native -CommandName 'eqr' -ScriptBlock {
             [CompletionResult]::new('--bg', '--bg', [CompletionResultType]::ParameterName, 'Background RGB color (hex code)')
             [CompletionResult]::new('-s', '-s', [CompletionResultType]::ParameterName, 'Size of unit block in pixels (1..255)')
             [CompletionResult]::new('--scale', '--scale', [CompletionResultType]::ParameterName, 'Size of unit block in pixels (1..255)')
+            [CompletionResult]::new('-F', '-F ', [CompletionResultType]::ParameterName, 'Force the overwrite of an existing output file')
+            [CompletionResult]::new('--force', '--force', [CompletionResultType]::ParameterName, 'Force the overwrite of an existing output file')
             [CompletionResult]::new('-t', '-t', [CompletionResultType]::ParameterName, 'Output to terminal (never the logo)')
             [CompletionResult]::new('--terminal', '--terminal', [CompletionResultType]::ParameterName, 'Output to terminal (never the logo)')
             [CompletionResult]::new('-h', '-h', [CompletionResultType]::ParameterName, 'Print help')

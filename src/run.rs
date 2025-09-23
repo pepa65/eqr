@@ -177,11 +177,11 @@ pub fn run(args: Args) -> Result<(), ErrorKind> {
 		};
 		let qr_path = Path::new(&out);
 		// Check if output file exists and if so ask for overwrite
-		if qr_path.is_file() {
+		if qr_path.is_file() && !args.force {
 			let _ = Confirm::with_theme(&ColorfulTheme::default())
 				.with_prompt(format!("Overwrite {:?}?", &qr_path))
 				.interact()
-				.expect("dialog interaction failed");
+				.expect("rejected overwrite");
 		};
 
 		// Determine output file type based on file extension

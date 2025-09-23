@@ -34,6 +34,8 @@ set edit:completion:arg-completer[eqr] = {|@words|
             cand --bg 'Background RGB color (hex code)'
             cand -s 'Size of unit block in pixels (1..255)'
             cand --scale 'Size of unit block in pixels (1..255)'
+            cand -F 'Force the overwrite of an existing output file'
+            cand --force 'Force the overwrite of an existing output file'
             cand -t 'Output to terminal (never the logo)'
             cand --terminal 'Output to terminal (never the logo)'
             cand -h 'Print help'

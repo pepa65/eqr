@@ -1,16 +1,19 @@
 .ie \n(.g .ds Aq \(aq
 .el .ds Aq '
-.TH eqr 1  "eqr 1.8.44" 
+.TH eqr 1  "eqr 1.9.0" 
 .SH NAME
 eqr \- Encode text into svg/png/jpg/terminal\-format QR codes with optional logo
 .SH SYNOPSIS
-\fBqr\fR [\fB\-o\fR|\fB\-\-output\fR] [\fB\-t\fR|\fB\-\-terminal\fR] [\fB\-l\fR|\fB\-\-level\fR] [\fB\-p\fR|\fB\-\-path\fR] [\fB\-P\fR|\fB\-\-proportion\fR] [\fB\-e\fR|\fB\-\-edge\fR] [\fB\-f\fR|\fB\-\-fg\fR] [\fB\-b\fR|\fB\-\-bg\fR] [\fB\-s\fR|\fB\-\-scale\fR] [\fB\-h\fR|\fB\-\-help\fR] [\fB\-V\fR|\fB\-\-version\fR] [\fISTRING\fR] 
+\fBqr\fR [\fB\-o\fR|\fB\-\-output\fR] [\fB\-F\fR|\fB\-\-force\fR] [\fB\-t\fR|\fB\-\-terminal\fR] [\fB\-l\fR|\fB\-\-level\fR] [\fB\-p\fR|\fB\-\-path\fR] [\fB\-P\fR|\fB\-\-proportion\fR] [\fB\-e\fR|\fB\-\-edge\fR] [\fB\-f\fR|\fB\-\-fg\fR] [\fB\-b\fR|\fB\-\-bg\fR] [\fB\-s\fR|\fB\-\-scale\fR] [\fB\-h\fR|\fB\-\-help\fR] [\fB\-V\fR|\fB\-\-version\fR] [\fISTRING\fR] 
 .SH DESCRIPTION
 Encode text into svg/png/jpg/terminal\-format QR codes with optional logo
 .SH OPTIONS
 .TP
 \fB\-o\fR, \fB\-\-output\fR \fI<QR_PATH>\fR
 Output file (jpg/png/svg) [default: qr.png]
+.TP
+\fB\-F\fR, \fB\-\-force\fR
+Force the overwrite of an existing output file
 .TP
 \fB\-t\fR, \fB\-\-terminal\fR
 Output to terminal (never the logo)
@@ -45,4 +48,4 @@ Print version
 [\fISTRING\fR]
 String to encode (can also be piped in)
 .SH VERSION
-v1.8.44
+v1.9.0
