@@ -29,7 +29,6 @@ pub enum ErrorKind {
 impl ErrorKind {
 	/// Colorize warning|error output.
 	pub fn colorize(&self) -> io::Result<()> {
-		//let color_choice = match atty::is(atty::Stream::Stderr) {
 		let color_choice = match io::stderr().is_terminal() {
 			true => ColorChoice::Auto,
 			false => ColorChoice::Never,
