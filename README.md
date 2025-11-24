@@ -5,7 +5,7 @@
 [![license](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/pepa65/eqr/blob/main/LICENSE)
 [![downloads](https://img.shields.io/crates/d/eqr.svg)](https://crates.io/crates/eqr)
 
-# eqr 1.9.28
+# eqr 1.9.29
 **Encode text into svg/png/jpg/terminal-format QR codes with optional logo**
 
 * Error correction level can be set
@@ -63,7 +63,7 @@ The binaries will be installed into `~/.cargo/bin/` which still needs to be adde
 
 ## Usage
 ```
-qr 1.9.28 - Encode text into svg/png/jpg/terminal-format QR codes with optional logo
+qr 1.9.29 - Encode text into svg/png/jpg/terminal-format QR codes with optional logo
 Usage: qr [OPTIONS] [STRING]
 Arguments:
   [STRING]  String to encode (can also be piped in)
@@ -83,7 +83,7 @@ Options:
 ```
 
 ```
-promptpay 1.9.28 - Make Thai PromptPay QR code
+promptpay 1.9.29 - Make Thai PromptPay QR code
 Usage: promptpay [OPTIONS] <PHONE>
 Arguments:
   <PHONE>  Thai phone number (10 digits starting with 0)
